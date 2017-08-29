@@ -1,0 +1,8 @@
+section {
+    padding: 0 32px;
+}
+
+ngx-datatable {
+    margin-top: -50px !important;
+    z-index: 999;
+}

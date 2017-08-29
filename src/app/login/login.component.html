@@ -1,0 +1,18 @@
+<div class="login-module">
+  <div class="login-section md-whiteframe-8dp">
+    <div class="logo">
+      <span>Int</span>
+    </div>
+
+    <div class="title">Log in to your account</div>
+
+    <form #userForm="ngForm" (ngSubmit)="userForm.valid && loginUser(userForm.value)" ngNativeValidate>
+      <input type="email" required placeholder="Email" name="user" [(ngModel)]="model.email">      
+      <input type="password" required placeholder="Password" name="password" [(ngModel)]="model.password">
+
+      <span *ngIf="message" style="color: red;">{{ message }}</span>
+      <button type="submit">INICIAR SESIÓN</button>
+    </form>
+
+  </div>
+</div>

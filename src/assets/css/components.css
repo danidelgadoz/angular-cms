@@ -1,0 +1,169 @@
+/****************************************************
+*********************** DIALOG **********************
+****************************************************/
+div[dialog]  {
+    display: none;    
+    background-color: rgba(33,33,33,0.5);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+}
+
+div[dialog].active {
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog{
+    min-width: 40%;
+    max-width: 80%;
+    border-radius: 4px;
+    background-color: rgb(255,255,255);
+    color: rgba(0,0,0,0.87);    
+}
+
+@keyframes dialog-in {
+    from  { opacity: 0; -webkit-transform: scale(0.25); }
+    to    { opacity: 1; -webkit-transform: scale(1); }
+}
+
+@keyframes dialog-out {
+    from  { opacity: 1; -webkit-transform: scale(1); }
+    to  { opacity: 0; -webkit-transform: scale(0.25); }
+}
+
+div[dialog].active .dialog {
+    animation: dialog-in 0.5s both ease-in; z-index: 50;
+}
+
+div[dialog] .dialog {
+    animation: dialog-out 0.5s both ease-in; z-index: 50;
+}
+
+.dialog .title {
+    display: flex;
+    justify-content: flex-start;
+    padding: 16px 16px 8px 16px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: .005em;
+}
+
+.dialog .content {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0px 16px 8px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.010em;
+    line-height: 1.6em;
+    margin: 0.8em 0 1.6em;
+}
+
+.dialog .footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+
+
+/****************************************************
+***************** PROGRESS CIRCULAR *****************
+****************************************************/
+div[loadingBackdrop]  {
+    display: none;
+    opacity: .48;
+    z-index: 59;
+    background-color: rgba(33,33,33,1.0);
+    -webkit-transition: opacity .45s;
+    transition: opacity .45s;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+}
+
+div[loadingBackdrop].active {
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+  animation: rotator 1.4s linear infinite;
+  width: 96px;
+    height: 96px;
+    transform-origin: 48px 48px 48px;
+}
+
+@keyframes rotator {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(270deg); }
+}
+
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation:
+    dash 1.4s ease-in-out infinite, 
+    colors 5.6s ease-in-out infinite;
+}
+
+@keyframes colors {
+	0% { stroke: #4285F4; }
+	25% { stroke: #DE3E35; }
+	50% { stroke: #F7C223; }
+	75% { stroke: #1B9A59; }
+    100% { stroke: #4285F4; }
+}
+
+@keyframes dash {
+ 0% { stroke-dashoffset: 187; }
+ 50% {
+   stroke-dashoffset: 46.75;
+   transform:rotate(135deg);
+ }
+ 100% {
+   stroke-dashoffset: 187;
+   transform:rotate(450deg);
+ }
+}
+
+
+/****************************************************
+******************* NGX-DATATABLE *******************
+****************************************************/
+.datatable-row-wrapper {    
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.datatable-row-wrapper:last-child {
+    border-bottom: none;
+}
+
+.ngx-datatable.material.single-selection .datatable-body-row.active, .ngx-datatable.material.single-selection .datatable-body-row.active .datatable-row-group, .ngx-datatable.material.multi-selection .datatable-body-row.active, .ngx-datatable.material.multi-selection .datatable-body-row.active .datatable-row-group, .ngx-datatable.material.multi-click-selection .datatable-body-row.active, .ngx-datatable.material.multi-click-selection .datatable-body-row.active .datatable-row-group {
+    background-color: #E91E63 !important;
+    color: #fff !important;
+}
+
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
+    color: inherit !important;
+}
+
+
+/****************************************************
+*************** BOOTSTRAP INPUT COLOR ***************
+****************************************************/
+.form-control {
+    background-color: rgb(255, 250, 250);
+}

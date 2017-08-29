@@ -1,0 +1,93 @@
+.login-module {
+    background: url('http://fuse-angular-material.withinpixels.com/assets/images/backgrounds/march.jpg') no-repeat;
+    background-size: cover;
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-section {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    /* flex: 1; */
+
+    width: 384px;
+    max-width: 384px;
+    margin: 32px;
+    padding: 32px;
+    padding-bottom: 0;
+    background: #FFF;
+    text-align: center;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.90);
+}
+
+.logo {
+    width: 144px;
+    height: 144px;
+    line-height: 144px;
+    font-size: 86px;
+    font-weight: 500;
+    margin: 32px auto;
+    background-color: #cc0033;
+    color: #FFF;
+    border-radius: 50%;
+}
+
+.title {
+    font-size: 17px;
+    margin-bottom: 32px;
+}
+
+form {
+    margin-bottom: 100px;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #808080;    
+    background: url('https://www.w3schools.com/css/searchicon.png') no-repeat 10px 10px;
+    padding: 12px 20px 12px 40px;
+    margin-bottom: 4px;
+    /* outline: 0; */
+}
+
+input[type=email] {
+    background-color: #e9edc1 !important;
+}
+
+input[type=password] {
+    background-color: #e2e2e2 !important;
+}
+
+button[type=submit] {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(1,87,155);
+    color: rgba(255,255,255,0.87);
+    border: none;
+    height: 64px;
+    width: 100%;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 100;
+    letter-spacing: .01em;
+    cursor: pointer;
+    outline: none;
+    transition: all 1s;
+}
+
+button[type=submit]:hover {
+    background-color: rgb(3,155,229);
+}

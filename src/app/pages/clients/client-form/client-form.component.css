@@ -1,0 +1,18 @@
+app-toolbar .toolbar-section{
+    background-color: rgb(255,255,255);
+    color: #666;
+    padding-left: 32px;
+    font-size: 16px;
+    line-height: 44px;
+}
+
+section {
+    margin: 16px 32px;
+    padding: 16px;
+    background-color: rgb(255,255,255);
+}
+
+fieldset {    
+    margin: 8px;
+    padding: 8px;
+}

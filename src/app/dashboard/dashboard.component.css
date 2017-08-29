@@ -1,0 +1,118 @@
+.dashboard {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+}
+app-sidenav {
+    transition: width 0.35s;
+    z-index: 3000;
+}
+
+:host.backdrop-state app-sidenav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+}
+
+div[backdrop].active{
+    display: initial;
+}
+
+div[backdrop] {
+    display: none;
+    opacity: .48;
+    z-index: 59;
+    background-color: rgba(33,33,33,1.0);
+    -webkit-transition: opacity .45s;
+    transition: opacity .45s;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+}
+
+.wrapper {
+    position: relative;
+    overflow: auto;
+    color: rgba(0,0,0,0.87);    
+    background-color: rgb(250,250,250); 
+    margin: 0;    
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.wrapper app-toolbar {
+    background: #f6f6f6 !important;
+    color: #666 !important;    
+}
+
+.wrapper app-toolbar .md-toolbar-tools {    
+    padding-right: 0;
+}
+
+.wrapper app-toolbar button.side-nav-toggle{
+    background: transparent center center no-repeat;
+    background-size: 24px 24px;
+    cursor: pointer;
+    border: 0;
+    display: block;
+    height: 48px;
+    overflow: hidden;
+    top: 8px;
+    width: 48px;
+    z-index: 2;
+    display: none;
+    outline: none;
+}
+
+.wrapper app-toolbar button.side-nav-toggle  i{
+    /* color: #fff; */
+    width: 24px;
+    vertical-align: middle;
+}
+
+.wrapper div.content-wrapper {
+    overflow: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.wrapper div.content-wrapper div.main-content {
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.wrapper div.content-wrapper div.footer-content {
+}
+
+.wrapper div.content-wrapper div.footer-content div#license-footer {
+    padding: 16px 32px;
+    text-align: center;    
+    border-top: 1px solid #ddd;    
+}
+
+.wrapper div.content-wrapper div.footer-content div#license-footer a {
+    text-decoration: none;
+    color: rgb(255,82,82);
+}
+
+@media (max-width: 960px) {
+    :host app-sidenav {
+        width: 0;
+    }
+    .wrapper app-toolbar button.side-nav-toggle {
+        display: initial;
+    }
+}
+
+app-menu {
+    height: 100%
+}

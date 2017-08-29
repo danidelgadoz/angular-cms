@@ -1,0 +1,53 @@
+<div class="dashboard">
+    <app-sidenav class="md-closed md-locked-open">
+    </app-sidenav>
+
+    <div class="wrapper">
+        <app-toolbar>
+            <div class="md-toolbar-tools">
+                <button class="side-nav-toggle" (click)="toggleSideNav()">
+                    <i class="material-icons" title="Show navigation">menu</i>
+                </button>
+                <span>Internovam</span>
+
+                <div class="flex"></div>
+                
+                <app-menu id="dashboard-menu">
+                    <div class="app-menu-toogle">
+                        <app-button>
+                            <img src="http://fuse-angular-material.withinpixels.com/assets/images/avatars/profile.jpg" alt="User Image">
+                            <span>Administrador</span>
+                        </app-button>
+                    </div>
+
+                    <div class="app-menu-content">
+                        <a class="menu-item" (click)="logOut()">Salir</a>                        
+                    </div>
+                </app-menu>
+
+                <app-button class="button-toolbar"><i class="material-icons" title="Show navigation">settings</i></app-button>
+            </div>
+        </app-toolbar>
+
+        <div class="content-wrapper">
+            <div class="main-content">
+                <router-outlet></router-outlet>
+            </div>
+
+            <div class="footer-content">
+                <div id="license-footer">
+                Internovam ©2002–2017.
+                Code licensed under the <a ng-href="./license" class="md-accent" href="./license">MIT License</a>.              
+                </div>
+            </div>
+        </div>
+
+        <div loadingBackdrop>
+            <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            </svg>
+        </div>
+    </div>
+    
+    <div backdrop></div>    
+</div>
