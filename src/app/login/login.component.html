@@ -6,12 +6,29 @@
 
     <div class="title">Log in to your account</div>
 
-    <form #userForm="ngForm" (ngSubmit)="userForm.valid && loginUser(userForm.value)" ngNativeValidate>
-      <input type="email" required placeholder="Email" name="user" [(ngModel)]="model.email">      
-      <input type="password" required placeholder="Password" name="password" [(ngModel)]="model.password">
+    <form [formGroup]="form" (ngSubmit)="form.valid && loginUser()">
+      <md-input-container style="width: 100%">
+        <input mdInput type="email" placeholder="Email" formControlName="email">
+
+        <md-error *ngIf="form.controls['email'].hasError('pattern')" class="form-control-feedback">
+          Invalid Email
+        </md-error>
+        <md-error *ngIf="form.controls['email'].hasError('required')" class="form-control-feedback">
+          Email is required
+        </md-error>
+      </md-input-container>
+      
+      <md-input-container style="width: 100%">        
+        <input mdInput type="password" placeholder="Password" formControlName="password">
+        
+        <md-error *ngIf="form.controls['password'].hasError('required')" class="form-control-feedback">
+          Password is required
+        </md-error>
+      </md-input-container>
 
       <span *ngIf="message" style="color: red;">{{ message }}</span>
-      <button type="submit">INICIAR SESIÓN</button>
+
+      <button type="submit" md-raised-button color="primary">INICIAR SESIÓN</button>
     </form>
 
   </div>

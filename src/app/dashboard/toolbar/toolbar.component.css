@@ -29,10 +29,6 @@
     margin: 0;
 }
 
-:host /deep/ .md-toolbar-tools i:first-of-type{
-    padding-right: 8px;
-}
-
 /* CUSTOM STYLES */
 :host.toolbar-background {
     background-image: url('http://apiv2.gn7logistic.com:3000/images/background/header-bg.png') !important;

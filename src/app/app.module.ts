@@ -23,8 +23,6 @@ import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { ClientFormComponent } from './pages/clients/client-form/client-form.component';
 import { ClientsComponent } from './pages/clients/clients.component';
 import { Error404Component } from './_components/error-404/error-404.component';
-import { ButtonComponent } from './_components/button/button.component';
-import { MenuComponent } from './_components/menu/menu.component';
 import { DemoMaterialModule } from './demo-material-module';
 
 @NgModule({
@@ -40,8 +38,7 @@ import { DemoMaterialModule } from './demo-material-module';
     UserFormComponent,
     ClientFormComponent,
     ClientsComponent,
-    Error404Component,    
-    ButtonComponent, MenuComponent
+    Error404Component
   ],
   imports: [
     AppRoutingModule,
@@ -55,8 +52,8 @@ import { DemoMaterialModule } from './demo-material-module';
     DemoMaterialModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: responseInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: responseInterceptor, multi: true },
     AuthGuard,
     IsLoggedIn,
     AuthenticationService,

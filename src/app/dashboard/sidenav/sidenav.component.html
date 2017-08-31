@@ -5,7 +5,22 @@
     </div>
     <div class="header-footer">
         <div></div>
-        <div>OPCIONES</div>
+
+        <div>
+            <button md-button [mdMenuTriggerFor]="menu" style="font-size: 12px;">OPCIONES</button>
+
+            <md-menu #menu="mdMenu" [overlapTrigger]="false" xPosition="before" yPosition="below">
+                <button md-menu-item>
+                    <span> Logout </span>
+                </button>
+                <button md-menu-item disabled>
+                    <span> Check voicemail </span>
+                </button>
+                <button md-menu-item>
+                    <span> Disable alerts </span>
+                </button>
+            </md-menu>
+        </div>
     </div>
 </div>
 

@@ -16,3 +16,29 @@ fieldset {
     margin: 8px;
     padding: 8px;
 }
+
+.form-content {
+    box-sizing: border-box;
+    display: flex;    
+}
+
+.inputs-section {
+    padding: 8px;    
+}
+
+.imagen-section div {
+    position: relative;
+    padding: 16px;
+}
+
+.imagen-section div img {
+    height: 250px;
+    width: 250px;    
+    margin-top: 32px;
+}
+
+.imagen-section div button {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+}

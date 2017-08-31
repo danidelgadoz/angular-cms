@@ -1,7 +1,7 @@
 <app-toolbar class="large-toolbar toolbar-background">
   <div class="md-toolbar-tools toolbar-flex">
-      <button md-icon-button routerLink="./../">
-        <i class="material-icons">arrow_back</i>
+      <button md-icon-button routerLink="./../">        
+        <md-icon>arrow_back</md-icon>
       </button>
 
       <div class="flex"></div>
@@ -27,9 +27,9 @@
 
   <form [formGroup]="form" (ngSubmit)="form.valid ? (client.id ? update() : save()) : null">
       <fieldset [disabled]="alert.active">
-        <div>
-          <div>
-            <md-input-container style="width: 49%">
+        <div class="form-content">
+          <div class="inputs-section">
+            <md-input-container style="width: 50%">
               <input mdInput placeholder="First Name" type="text" id="first_name" [(ngModel)]="client.first_name" formControlName="first_name">
               <md-error *ngIf="form.controls['first_name'].hasError('required')" class="form-control-feedback">
                 Required field
@@ -58,31 +58,35 @@
               <input mdInput placeholder="Img trademark" type="text" id="img_trademark" [(ngModel)]="client.img_trademark" formControlName="img_trademark">
             </md-input-container>
 
-            <md-input-container style="width: 100%">
+            <md-input-container style="width: 49%">
               <input mdInput placeholder="Telephone" type="tel" id="phone" [(ngModel)]="client.phone" formControlName="phone">
             </md-input-container>
 
-            <md-input-container style="width: 100%">
+            <md-input-container style="width: 50%">
               <input mdInput placeholder="Cellphone" type="tel" id="mobile_phone" [(ngModel)]="client.mobile_phone" formControlName="mobile_phone">
             </md-input-container>
-
-            <div style="width: 100%; padding: 16px 0;">
-              <button type="button" md-raised-button onclick="document.querySelector('#exampleInputFile').click()">
-                Seleccionar archivo
-              </button> 
-              <span *ngIf="imageFile">{{ imageFile.name }}</span>
-              <input type="file" id="exampleInputFile" (change)="imagesPreview($event)" style="display: none;">
-               <!-- <img *ngIf="imageFile" [src]="imageFile.link">  -->
-            </div>
           </div>
 
-          <div>
-            <img [src]="imageFile ? imageFile.link : 'https://www.financiero.pe//themes/custom/financiero/img/glyph-servicio-al-cliente.svg'" style="width: 100%;height: 75%; border: 1px solid #cccccc;">
+          <div class="imagen-section">
+            <div>
+              <img class="md-whiteframe-4dp" [src]="imageFile ? imageFile.link : 'https://www.financiero.pe//themes/custom/financiero/img/glyph-servicio-al-cliente.svg'">
+              <button type="button" md-fab  onclick="document.querySelector('#exampleInputFile').click()">
+                <md-icon>attach_file</md-icon>
+              </button>
+              <input type="file" id="exampleInputFile" (change)="imagesPreview($event)" style="display: none;">
+            </div>
+            <!--<div style="width: 100%; padding: 8px 0;">              
+              <button type="button" md-raised-button color="primary" onclick="document.querySelector('#exampleInputFile').click()" style="width: 100%;">
+                Seleccionar archivo
+              </button>
+              <span *ngIf="imageFile">{{ imageFile.name }}</span>
+              <input type="file" id="exampleInputFile" (change)="imagesPreview($event)" style="display: none;">
+            </div>-->
           </div>
         </div>
 
         <div style="margin-top: 8px; border-top: 1px solid #d4d4d4; display: flex; flex-direction: row; justify-content: flex-end; padding: 8px;">
-          <button type="button" md-raised-button (click)="reset()">RESET</button>           
+          <button type="button" md-raised-button (click)="reset()">RESET</button>
           <button type="submit" md-raised-button color="primary" style="margin-left: 8px;">SAVE</button>
         </div>
       </fieldset>

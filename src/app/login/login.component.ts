@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthenticationService } from '../_services/authentication.service';
 
@@ -9,26 +10,32 @@ import { AuthenticationService } from '../_services/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {  
-  model: any = {
-    email: "frontend@internovam.com",
-    password: "123456"
-  };
-  loading = false;
+  form: FormGroup;
   message : string;
 
   constructor(
+    formBuilder: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService
-  ) {}
+  ) {
+    this.form = formBuilder.group({
+      email: ['frontend@internovam.com', [
+          Validators.required,
+          Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+      ]],
+      password: ['123456', Validators.required]
+    });
+  }
 
   ngOnInit() {
   }
 
   loginUser(value : any ) {
-    this.loading = true;
-    this.authenticationService.login(this.model.email, this.model.password)
+    console.log(this.form.value);
+    
+    this.authenticationService.login(this.form.value.email, this.form.value.password)
       .subscribe(
-        data => {          
+        data => {
           if (data.auth)
             this.router.navigate(['/dashboard']);
           else

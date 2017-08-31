@@ -5,27 +5,38 @@
     <div class="wrapper">
         <app-toolbar>
             <div class="md-toolbar-tools">
-                <button class="side-nav-toggle" (click)="toggleSideNav()">
-                    <i class="material-icons" title="Show navigation">menu</i>
-                </button>
-                <span>Internovam</span>
+                <button md-button class="side-nav-toggle" (click)="toggleSideNav()">
+                    <md-icon> menu </md-icon>
+                </button>                
 
-                <div class="flex"></div>
+                <div class="flex"></div>                                
+
+                <div class="user-menu">
+                    <button md-button [mdMenuTriggerFor]="menu">
+                        <img src="http://fuse-angular-material.withinpixels.com/assets/images/avatars/profile.jpg" alt="User Image">
+                        Administrador
+                        <md-icon>keyboard_arrow_down</md-icon>
+                    </button>
+
+                    <md-menu #menu="mdMenu" [overlapTrigger]="false" xPosition="before" yPosition="above">
+                        <button md-menu-item (click)="logOut()">
+                            <md-icon> exit_to_app </md-icon>
+                            <span> Logout </span>
+                        </button>
+                        <button md-menu-item disabled>
+                            <md-icon> voicemail </md-icon>
+                            <span> Check voicemail </span>
+                        </button>
+                        <button md-menu-item>
+                            <md-icon> notifications_off </md-icon>
+                            <span> Disable alerts </span>
+                        </button>
+                    </md-menu>
+                </div>
                 
-                <app-menu id="dashboard-menu">
-                    <div class="app-menu-toogle">
-                        <app-button>
-                            <img src="http://fuse-angular-material.withinpixels.com/assets/images/avatars/profile.jpg" alt="User Image">
-                            <span>Administrador</span>
-                        </app-button>
-                    </div>
-
-                    <div class="app-menu-content">
-                        <a class="menu-item" (click)="logOut()">Salir</a>                        
-                    </div>
-                </app-menu>
-
-                <app-button class="button-toolbar"><i class="material-icons" title="Show navigation">settings</i></app-button>
+                <button md-button class="settings">
+                    <md-icon>format_list_bulleted</md-icon>
+                </button>                
             </div>
         </app-toolbar>
 
