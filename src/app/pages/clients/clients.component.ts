@@ -13,7 +13,7 @@ export class ClientsComponent implements OnInit {
   deleteConfirmation = false;  
   page = new Page();
   rows = new Array<any>();
-  selected = [];
+  selected = [{id: null}];
   isLoading: boolean;
   
   columns = [

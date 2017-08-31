@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { CKEditorModule } from 'ng2-ckeditor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule }     from './app-routing.module';
@@ -50,6 +51,7 @@ import { ContentComponent } from './_components/content/content.component';
     HttpModule,
     HttpClientModule,
     NgxDatatableModule,
+    CKEditorModule,
     BrowserAnimationsModule,
     DemoMaterialModule
   ],
