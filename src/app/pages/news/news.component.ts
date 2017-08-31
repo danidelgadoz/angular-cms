@@ -15,7 +15,7 @@ export class NewsComponent implements OnInit {
     this.ckeditorContent = `<p>My HTML</p>`;
   }
 
-  imagesPreview(event) {
+  addToGallery(event) {
     console.log(event.srcElement.files[0]);
 
     if (event.target.files && event.target.files[0]) {
@@ -33,6 +33,11 @@ export class NewsComponent implements OnInit {
         reader.readAsDataURL(event.target.files[0]);
     }
   }
+
+  removeFromGallery(index) {    
+    this.gallery.splice(index, 1);
+  }
+
 
   saveGallery(){
     let formData = new FormData();
