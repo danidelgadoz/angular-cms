@@ -27,14 +27,14 @@ export class ClientsComponent implements OnInit {
 
   constructor(private clientService: ClientService) {
     this.page.pageNumber = 0;
-    this.page.size = 10;
+    this.page.size = 8;
   }
 
   ngOnInit() {
     this.setPage({ offset: 0 });
   }
 
-  setPage(pageInfo){    
+  setPage(pageInfo){
     this.page.pageNumber = pageInfo.offset;
     this.page.size = pageInfo.limit ? pageInfo.limit : this.page.size;    
     

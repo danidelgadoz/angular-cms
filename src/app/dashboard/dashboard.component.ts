@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
@@ -8,7 +8,10 @@ import { AuthenticationService } from '../_services/authentication.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(
+    private authenticationService: AuthenticationService,
+    private _element: ElementRef,
+  ) { }
 
   ngOnInit() {
     setTimeout(()=>{ 
@@ -32,6 +35,19 @@ export class DashboardComponent implements OnInit {
   logOut() {
     console.log("serrando session...");
     this.authenticationService.logout();
+  }
+
+  toggleFullscreen() {
+    let elem = this._element.nativeElement.querySelector('.content-wrapper');
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullScreen) {
+      elem.webkitRequestFullScreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.msRequestFullScreen) {
+      elem.msRequestFullScreen();
+    }
   }
 
 }

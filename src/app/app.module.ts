@@ -24,6 +24,7 @@ import { ClientFormComponent } from './pages/clients/client-form/client-form.com
 import { ClientsComponent } from './pages/clients/clients.component';
 import { Error404Component } from './_components/error-404/error-404.component';
 import { DemoMaterialModule } from './demo-material-module';
+import { ContentComponent } from './_components/content/content.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DemoMaterialModule } from './demo-material-module';
     UserFormComponent,
     ClientFormComponent,
     ClientsComponent,
-    Error404Component
+    Error404Component,
+    ContentComponent
   ],
   imports: [
     AppRoutingModule,
@@ -52,8 +54,8 @@ import { DemoMaterialModule } from './demo-material-module';
     DemoMaterialModule
   ],
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: responseInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: responseInterceptor, multi: true },
     AuthGuard,
     IsLoggedIn,
     AuthenticationService,

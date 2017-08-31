@@ -6,12 +6,24 @@
 
       <div class="flex"></div>
       
-      <button md-icon-button (click)="delete()">
+      <!-- <button md-icon-button *ngIf="client.id" (click)="delete()">
         <md-icon>delete</md-icon>
       </button>
 
-      <button md-icon-button (click)="delete()">
+      <button md-icon-button *ngIf="!client.id" (click)="delete()">
         <md-icon>save</md-icon>
+      </button> -->      
+
+      <button type="button" md-raised-button (click)="reset()">
+        <md-icon>refresh</md-icon>RESET
+      </button>
+
+      <button type="button" md-raised-button *ngIf="client.id" (click)="delete()">
+        <md-icon>delete</md-icon>DELETE
+      </button>
+
+      <button type="submit" md-raised-button form="clientForm">
+        <md-icon>save</md-icon>SAVE
       </button>
   </div>
 
@@ -20,12 +32,12 @@
   </div>
 </app-toolbar>
 
-<section class="md-whiteframe-4dp">
+<app-content class="md-whiteframe-4dp">
   <div *ngIf="alert.active" class="alert alert-success" role="alert">
     <strong>{{alert.title}}</strong> {{alert.message}}
   </div>
 
-  <form [formGroup]="form" (ngSubmit)="form.valid ? (client.id ? update() : save()) : null">
+  <form id="clientForm" [formGroup]="form" (ngSubmit)="form.valid ? (client.id ? update() : save()) : null">
       <fieldset [disabled]="alert.active">
         <div class="form-content">
           <div class="inputs-section">
@@ -84,11 +96,11 @@
             </div>-->
           </div>
         </div>
-
-        <div style="margin-top: 8px; border-top: 1px solid #d4d4d4; display: flex; flex-direction: row; justify-content: flex-end; padding: 8px;">
-          <button type="button" md-raised-button (click)="reset()">RESET</button>
-          <button type="submit" md-raised-button color="primary" style="margin-left: 8px;">SAVE</button>
-        </div>
       </fieldset>
   </form>
-</section>
+
+  <!-- <div class="app-content-footer">
+    <button type="button" md-raised-button (click)="reset()">RESET</button>
+    <button type="submit" form="clientForm" md-raised-button color="primary">SAVE</button>
+  </div>   -->
+</app-content>

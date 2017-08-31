@@ -7,10 +7,15 @@
             <div class="md-toolbar-tools">
                 <button md-button class="side-nav-toggle" (click)="toggleSideNav()">
                     <md-icon> menu </md-icon>
-                </button>                
+                </button>
 
-                <div class="flex"></div>                                
+                <button md-raised-button color="accent" style="margin-left: 8px;">
+                    <md-icon style="font-size: 18px; height: 18px; width: 24px; color: rgba(0,0,0,.54);">dashboard</md-icon>
+                    Internovam Theme (Ng4-cms)
+                </button>
 
+                <div class="flex"></div>                 
+                
                 <div class="user-menu">
                     <button md-button [mdMenuTriggerFor]="menu">
                         <img src="http://fuse-angular-material.withinpixels.com/assets/images/avatars/profile.jpg" alt="User Image">
@@ -32,11 +37,30 @@
                             <span> Disable alerts </span>
                         </button>
                     </md-menu>
-                </div>
+                </div>                
+                
+                <button md-button [mdMenuTriggerFor]="menuLanguage" class="settings">
+                    <img src="http://fuse-angular-material.withinpixels.com/assets/images/flags/us.png" style="margin-right: 8px;">
+                    <span>EN</span>
+                </button>
+                <md-menu #menuLanguage="mdMenu" [overlapTrigger]="false" xPosition="before" yPosition="above">
+                    <button md-menu-item>
+                        <img src="http://fuse-angular-material.withinpixels.com/assets/images/flags/us.png" style="margin-right: 8px;">
+                        <span>EN</span>
+                    </button>
+                    <button md-menu-item>
+                        <img src="http://fuse-angular-material.withinpixels.com/assets/images/flags/es.png" style="margin-right: 8px;">
+                        <span>ES</span>
+                    </button>
+                </md-menu>
+
+                <button md-button class="settings" (click)="toggleFullscreen()">
+                    <md-icon>fullscreen</md-icon>
+                </button>
                 
                 <button md-button class="settings">
                     <md-icon>format_list_bulleted</md-icon>
-                </button>                
+                </button>
             </div>
         </app-toolbar>
 
