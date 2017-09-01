@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NewsComponent implements OnInit {
   ckeditorContent: any;
   gallery: any[] = [];
+  inputDemoModel: string;
 
   constructor() { }
 
@@ -16,8 +17,6 @@ export class NewsComponent implements OnInit {
   }
 
   addToGallery(event) {
-    console.log(event.srcElement.files[0]);
-
     if (event.target.files && event.target.files[0]) {
         var reader = new FileReader();
 
@@ -52,6 +51,10 @@ export class NewsComponent implements OnInit {
     // }, error => {
     //   console.log(error.json());
     // });
+  }
+
+  inputDemoOnChange() {
+    console.log("inputDemoModel:", this.inputDemoModel);
   }
 
 }

@@ -9,7 +9,7 @@
 </app-content>
 
 <app-content>
-  <h1>Gallery</h1>  
+  <h1>Gallery</h1>
 
   <div class="gallery">
     <div class="gallery-file-images">
@@ -34,4 +34,14 @@
       </div>
     </div>
   </div>
+</app-content>
+
+<app-content>
+  <h1>Input component demo</h1>
+
+  <form #formTest="ngForm">
+    <app-input-demo [(ngModel)]="inputDemoModel" name="inputDemoModel" (keyup)="inputDemoOnChange()"></app-input-demo>
+    <p>Valid: {{ formTest.valid ? 'true' : 'false' }}</p>    
+    <p>Value: {{ inputDemoModel }}</p>    
+  </form>
 </app-content>

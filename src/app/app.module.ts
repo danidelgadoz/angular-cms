@@ -26,6 +26,7 @@ import { ClientsComponent } from './pages/clients/clients.component';
 import { Error404Component } from './_components/error-404/error-404.component';
 import { DemoMaterialModule } from './demo-material-module';
 import { ContentComponent } from './_components/content/content.component';
+import { InputDemoComponent } from './_components/input-demo/input-demo.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ContentComponent } from './_components/content/content.component';
     ClientFormComponent,
     ClientsComponent,
     Error404Component,
-    ContentComponent
+    ContentComponent,    
+    InputDemoComponent
   ],
   imports: [
     AppRoutingModule,
