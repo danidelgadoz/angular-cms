@@ -18,7 +18,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
     }
   ],
   template: `<textarea                                 
-                [value]="componentValue" 
+                [value]="inputValue" 
                 (change)="onChange($event)" 
                 (keyup)="onChange($event)"
             >
@@ -29,16 +29,14 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
     }`
   ]
 })
-export class InputDemoComponent implements ControlValueAccessor, Validator {
-  private componentValue: string = '';
+export class InputDemoComponent implements ControlValueAccessor, Validator {  
   private parseError: boolean;
-  private data: any;
+  private inputValue: any = '';  
 
   // this is the initial value set to the component
   public writeValue(initialValue: any) {
     if(initialValue){
-      this.data = initialValue;
-      this.componentValue = initialValue;
+      this.inputValue = initialValue;      
     }
   }
 
@@ -50,6 +48,9 @@ export class InputDemoComponent implements ControlValueAccessor, Validator {
 
   // not used, used for touch input
   public registerOnTouched() { }
+
+  // the method set in registerOnChange to emit changes back to the form
+  private propagateChange = (_: any) => {};
 
   // validates the form, returns null when valid else the validation object
   // in this case we're checking if the json parsing has passed or failed from the onChange method
@@ -63,9 +64,8 @@ export class InputDemoComponent implements ControlValueAccessor, Validator {
 
   // change events from the textarea
   private onChange(event) {    
-    // get value from text area
     let newValue = event.target.value;
-    this.data = newValue;
+    this.inputValue = newValue;
 
     if (newValue.length>2 && newValue.length<5)                    
         this.parseError = false;
@@ -73,10 +73,7 @@ export class InputDemoComponent implements ControlValueAccessor, Validator {
         this.parseError = true;      
 
     // update the form
-    this.propagateChange(this.data);
-  }
-
-  // the method set in registerOnChange to emit changes back to the form
-  private propagateChange = (_: any) => {};
+    this.propagateChange(this.inputValue);
+  }  
 
 }
