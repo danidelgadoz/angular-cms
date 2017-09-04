@@ -27,6 +27,7 @@ import { Error404Component } from './_components/error-404/error-404.component';
 import { DemoMaterialModule } from './demo-material-module';
 import { ContentComponent } from './_components/content/content.component';
 import { InputDemoComponent } from './_components/input-demo/input-demo.component';
+import { FileInputComponent } from './_components/file-input/file-input.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { InputDemoComponent } from './_components/input-demo/input-demo.componen
     ClientsComponent,
     Error404Component,
     ContentComponent,    
-    InputDemoComponent
+    InputDemoComponent, FileInputComponent
   ],
   imports: [
     AppRoutingModule,
@@ -58,8 +59,8 @@ import { InputDemoComponent } from './_components/input-demo/input-demo.componen
     DemoMaterialModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: responseInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: responseInterceptor, multi: true },
     AuthGuard,
     IsLoggedIn,
     AuthenticationService,

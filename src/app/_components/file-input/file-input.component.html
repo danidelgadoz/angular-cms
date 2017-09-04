@@ -1,0 +1,30 @@
+<div class="gallery">
+  <div class="gallery-file-images">
+    <div *ngFor="let file of gallery; let i=index">
+      <div class="remove" (click)="removeFromGallery(i)">×</div>
+      <img [src]="transform(file)">
+      <p>{{ file.name }}</p>
+    </div>
+  </div>
+
+  <div class="gallery-file-actions">
+    <div class="files-selected">
+      <md-icon>insert_drive_file</md-icon>
+      <p [style.color]="gallery.length ? 'rgba(0, 0, 0, 0.87)' : 'rgba(0, 0, 0, 0.26)'">
+        {{ gallery.length ? (gallery.length==1 ? (gallery[0].name) : (gallery.length + ' files selected')) : 'Select file' }}
+      </p>
+    </div>
+    
+    <div class="buttons">
+      <input 
+        type='file'
+        multiple
+        #inputFile
+        (change)="onChange($event)"
+        (keyup)="onChange($event)"
+        style="display: none;"
+      >
+      <button type="button" md-raised-button color="primary" (click)="inputFile.click()">BROWSE</button>
+    </div>
+  </div>
+</div>

@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsComponent implements OnInit {
   ckeditorContent: any;
-  gallery: any[] = [];
   inputDemoModel: string;
+  itest: any[];
 
   constructor() { }
 
@@ -16,41 +16,8 @@ export class NewsComponent implements OnInit {
     this.ckeditorContent = `<p>My HTML</p>`;
   }
 
-  addToGallery(event) {
-    if (event.target.files && event.target.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = (_event:any) => {
-            this.gallery.push({
-                link: _event.target.result,
-                file: event.srcElement.files[0],
-                name: event.srcElement.files[0].name
-            });
-            console.log(this.gallery);
-        }
-
-        reader.readAsDataURL(event.target.files[0]);
-    }
-  }
-
-  removeFromGallery(index) {    
-    this.gallery.splice(index, 1);
-  }
-
-
-  saveGallery(){
-    let formData = new FormData();
-    let galleryToSave : any[] = this.gallery;
-
-    for (let i = 0; i < galleryToSave.length; i++) {
-        formData.append(galleryToSave[i].name, galleryToSave[i].file);        
-    }
-
-    // this.http.post('http://localhost/pruebas/storeImages.php', formData).subscribe(data => {
-    //   alert('ok');
-    // }, error => {
-    //   console.log(error.json());
-    // });
+  ftest() {
+    console.log(this.itest)
   }
 
   inputDemoOnChange() {

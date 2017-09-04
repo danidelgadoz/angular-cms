@@ -9,32 +9,10 @@
 </app-content>
 
 <app-content>
-  <h1>Gallery</h1>
+  <h1 (click)="ftest()">Gallery</h1>
 
-  <div class="gallery">
-    <div class="gallery-file-images">
-      <div *ngFor="let imagen of gallery; let i=index">
-        <div class="remove" (click)="removeFromGallery(i)">×</div>
-        <img [src]="imagen.link">
-        <p>{{ imagen.name }}</p>
-      </div>
-    </div>
-
-    <div class="gallery-file-actions">
-      <div class="files-selected">
-        <md-icon>insert_drive_file</md-icon>
-        <!-- <p class="none">Select file</p> -->
-        <p class="selected">{{ gallery.length ? gallery.length + ' files selected' : 'Select file' }}</p>
-      </div>
-      
-      <div class="buttons">
-        <input type='file' id="exampleInputFile" (change)="addToGallery($event)" style="display: none;">
-        <button type="button" md-raised-button onclick="document.querySelector('#exampleInputFile').click()">BROWSE</button>
-        <button type="button" md-raised-button color="primary" (click)="saveGallery()">SAVE</button>
-      </div>
-    </div>
-  </div>
-</app-content>
+  <app-file-input [(ngModel)]="itest" name="itest" (change)="ftest()"></app-file-input>
+</app-content>}
 
 <app-content>
   <h1>Input component demo</h1>

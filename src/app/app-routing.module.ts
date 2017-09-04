@@ -20,12 +20,12 @@ const routes: Routes = [
   { 
     path: 'login',
     component: LoginComponent,
-    resolve: [IsLoggedIn]
+    // resolve: [IsLoggedIn]
   },
   { 
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home',  component: HomeComponent },
