@@ -80,5 +80,9 @@ export class FileInputComponent implements ControlValueAccessor {
   private transform(html) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(html));
   }
+
+  onFilesChange(fileList : FileList){
+    console.log("In component:", fileList)
+  }
   
 }

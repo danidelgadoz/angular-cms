@@ -1,9 +1,13 @@
 <div class="gallery">
-  <div class="gallery-file-images">
-    <div *ngFor="let file of gallery; let i=index">
+  <div class="gallery-file-images" appDnd (filesChangeEmiter)="onFilesChange($event)">
+    <div class="image-wrapper" *ngFor="let file of gallery; let i=index">
       <div class="remove" (click)="removeFromGallery(i)">×</div>
       <img [src]="transform(file)">
       <p>{{ file.name }}</p>
+    </div>
+
+    <div class="placeholder" *ngIf="gallery.length==0">
+      hola papu
     </div>
   </div>
 

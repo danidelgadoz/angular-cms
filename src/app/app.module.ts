@@ -28,6 +28,7 @@ import { DemoMaterialModule } from './demo-material-module';
 import { ContentComponent } from './_components/content/content.component';
 import { InputDemoComponent } from './_components/input-demo/input-demo.component';
 import { FileInputComponent } from './_components/file-input/file-input.component';
+import { DndDirective } from './_components/file-input/dnd.directive';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { FileInputComponent } from './_components/file-input/file-input.componen
     ClientsComponent,
     Error404Component,
     ContentComponent,    
-    InputDemoComponent, FileInputComponent
+    InputDemoComponent, FileInputComponent, DndDirective
   ],
   imports: [
     AppRoutingModule,
