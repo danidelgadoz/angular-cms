@@ -1,27 +1,27 @@
-<div class="gallery">
-  <div class="gallery-files">
-    <div class="gallery-file-images" appDnd (filesChangeEmiter)="addToGallery($event)">
-      <div class="image-wrapper" *ngFor="let file of gallery; let i=index">
-        <div class="remove" (click)="removeFromGallery(i)"><span>x</span></div>
-        <img [src]="getImagePreview(file)">
-        <p>{{ file.name }}</p>
+<div class="flex-column">
+  <div class="input-preview-content">
+    <div class="input-preview-wrapper" appDnd (filesChangeEmiter)="addToGallery($event)">
+      <div class="input-preview-item" *ngFor="let file of gallery; let i=index">
+        <div class="input-preview-item__delete" (click)="removeFromGallery(i)"><span>x</span></div>
+        <img class="input-preview-item__image" [src]="getImagePreview(file)">
+        <p class="input-preview-item__name">{{ file.name }}</p>
       </div>
 
-      <div class="placeholder" *ngIf="gallery.length==0">
+      <div class="input-preview-wrapper__placeholder" *ngIf="gallery.length==0">
         Drag & drop files here...
       </div>
     </div>
   </div>
 
-  <div class="gallery-file-actions">
-    <div class="files-selected">
+  <div class="input-file">
+    <div class="input-file__description">
       <md-icon>insert_drive_file</md-icon>
       <p [style.color]="gallery.length ? 'rgba(0, 0, 0, 0.87)' : 'rgba(0, 0, 0, 0.26)'">
         {{ gallery.length ? (gallery.length==1 ? (gallery[0].name) : (gallery.length + ' files selected')) : 'Select file' }}
       </p>
     </div>
     
-    <div class="buttons">
+    <div class="input-file__buttons">
       <input 
         type='file'
         multiple
