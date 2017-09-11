@@ -26,10 +26,7 @@ export class DndDirective {
     evt.preventDefault();
     evt.stopPropagation();
     this.background = null;
-    let files = evt.dataTransfer.files;
-    if(files.length > 0){
-      this.filesChangeEmiter.emit(files);
-    }
+    this.filesChangeEmiter.emit(evt);
   }
 
 }

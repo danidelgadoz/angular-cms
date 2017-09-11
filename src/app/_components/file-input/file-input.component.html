@@ -1,13 +1,15 @@
 <div class="gallery">
-  <div class="gallery-file-images" appDnd (filesChangeEmiter)="onFilesChange($event)">
-    <div class="image-wrapper" *ngFor="let file of gallery; let i=index">
-      <div class="remove" (click)="removeFromGallery(i)">×</div>
-      <img [src]="transform(file)">
-      <p>{{ file.name }}</p>
-    </div>
+  <div class="gallery-files">
+    <div class="gallery-file-images" appDnd (filesChangeEmiter)="addToGallery($event)">
+      <div class="image-wrapper" *ngFor="let file of gallery; let i=index">
+        <div class="remove" (click)="removeFromGallery(i)"><span>x</span></div>
+        <img [src]="getImagePreview(file)">
+        <p>{{ file.name }}</p>
+      </div>
 
-    <div class="placeholder" *ngIf="gallery.length==0">
-      hola papu
+      <div class="placeholder" *ngIf="gallery.length==0">
+        Drag & drop files here...
+      </div>
     </div>
   </div>
 
@@ -24,11 +26,18 @@
         type='file'
         multiple
         #inputFile
-        (change)="onChange($event)"
-        (keyup)="onChange($event)"
+        (change)="addToGallery($event)"
+        (keyup)="addToGallery($event)"
         style="display: none;"
       >
-      <button type="button" md-raised-button color="primary" (click)="inputFile.click()">BROWSE</button>
+      <button type="button" md-raised-button (click)="cleanGallery()">
+        <md-icon>delete</md-icon>
+        DELETE
+      </button>
+      <button type="button" md-raised-button color="primary" (click)="inputFile.click()">
+        <md-icon>folder</md-icon>
+        BROWSE
+      </button>
     </div>
   </div>
 </div>

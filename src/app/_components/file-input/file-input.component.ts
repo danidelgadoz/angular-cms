@@ -15,7 +15,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   ],  
 })
 export class FileInputComponent implements ControlValueAccessor {  
-  @Output() change: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Output() upload: EventEmitter<any[]> = new EventEmitter<any[]>();
 
   private inputValue: any;
   gallery: any[] = [];
@@ -36,24 +36,50 @@ export class FileInputComponent implements ControlValueAccessor {
 
   private propagateChange = (_: any) => {};
 
-  private onChange(event) {    
-    if (event.target.files && event.target.files.length>0) {
-      var files = event.target.files;
-
-      for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        var reader = new FileReader();
-        
-        reader.onload = (function(_file, _this){
-          return function(e){
-              _this.gallery.push(_file);
-          };
-        })(file, this);
-        reader.readAsDataURL(file);
-
-        this.propagateChange(this.gallery);
-      }
+  private addToGallery(event) {
+    let fileList : File[] = [];
+    
+    if (event.target.files && event.target.files.length>0) { // when is loaded by fileUploadPopup
+      fileList = event.target.files;
+    } else if( event.dataTransfer) { // when is loaded by dragAndDrop
+      fileList = event.dataTransfer.files;
     }
+
+    if (fileList.length < 0)
+      return;
+    
+    let galleryLengthBefore = this.gallery.length;
+
+    for (var i = 0; i < fileList.length; i++) {
+      var reader = new FileReader();
+      
+      reader.onload = (function(_file, _this, _filesAmount){
+        return function(e){
+          _this.gallery.push(_file);
+          if(_this.gallery.length == (_filesAmount + galleryLengthBefore))
+            _this.upload.emit();
+        };
+      })(fileList[i], this, fileList.length);// callback when the images have been loaded
+      reader.readAsDataURL(fileList[i]);
+    }
+
+    this.propagateChange(this.gallery);
+  }
+
+  private removeFromGallery(index) {
+    this.gallery.splice(index, 1);
+    this.propagateChange(this.gallery);
+    this.upload.emit();
+  }
+
+  private cleanGallery() {
+    this.gallery = [];
+    this.propagateChange(this.gallery);
+    this.upload.emit();
+  }
+
+  private getImagePreview(file) {
+    return file.type.includes('image') ? this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file)) : 'http://ciudad-escuela.org/wp-content/uploads/2014/04/quincem-badge-archivo.urbano-234x234.png';
   }
 
   /*private onChange(event) {    
@@ -71,18 +97,5 @@ export class FileInputComponent implements ControlValueAccessor {
         this.propagateChange(this.gallery);
     }
   }*/
-
-  private removeFromGallery(index) {
-    this.gallery.splice(index, 1);
-    this.change.emit();
-  }
-
-  private transform(html) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(html));
-  }
-
-  onFilesChange(fileList : FileList){
-    console.log("In component:", fileList)
-  }
   
 }
