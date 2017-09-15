@@ -9,17 +9,7 @@
 </app-content>
 
 <app-content>
-  <h1 (click)="ftest()">Gallery</h1>
+  <h1 (click)="filesLoaded()">Gallery</h1>
 
-  <app-file-input [(ngModel)]="itest" name="itest" (upload)="ftest()"></app-file-input>
+  <app-file-input [(ngModel)]="fileArray" name="fileArray" (upload)="filesLoaded()"></app-file-input>
 </app-content>}
-
-<app-content>
-  <h1>Input component demo</h1>
-
-  <form #formTest="ngForm">
-    <app-input-demo [(ngModel)]="inputDemoModel" name="inputDemoModel" (keyup)="inputDemoOnChange()"></app-input-demo>
-    <p>Valid: {{ formTest.valid ? 'true' : 'false' }}</p>    
-    <p>Value: {{ inputDemoModel }}</p>    
-  </form>
-</app-content>

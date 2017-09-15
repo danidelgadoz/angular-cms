@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NewsComponent implements OnInit {
   ckeditorContent: any;
   inputDemoModel: string;
-  itest: any[];
+  fileArray: any[];
 
   constructor() { }
 
@@ -16,12 +16,7 @@ export class NewsComponent implements OnInit {
     this.ckeditorContent = `<p>My HTML</p>`;
   }
 
-  ftest() {
-    console.log(this.itest)
+  filesLoaded() {
+    console.log(this.fileArray)
   }
-
-  inputDemoOnChange() {
-    console.log("inputDemoModel:", this.inputDemoModel);
-  }
-
 }
