@@ -44,7 +44,7 @@ import { DndDirective } from './_components/file-input/dnd.directive';
     ClientFormComponent,
     ClientsComponent,
     Error404Component,
-    ContentComponent,    
+    ContentComponent,
     InputDemoComponent, FileInputComponent, DndDirective
   ],
   imports: [
@@ -65,7 +65,7 @@ import { DndDirective } from './_components/file-input/dnd.directive';
     AuthGuard,
     IsLoggedIn,
     AuthenticationService,
-    ClientService      
+    ClientService
   ],
   bootstrap: [AppComponent]
 })

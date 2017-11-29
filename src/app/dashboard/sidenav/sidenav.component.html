@@ -7,9 +7,9 @@
         <div></div>
 
         <div>
-            <button md-button [mdMenuTriggerFor]="menu" style="font-size: 12px;">OPCIONES</button>
+            <button md-button [matMenuTriggerFor]="menu" style="font-size: 12px;">OPCIONES</button>
 
-            <md-menu #menu="mdMenu" [overlapTrigger]="false" xPosition="before" yPosition="below">
+            <mat-menu #menu="matMenu" [overlapTrigger]="false" xPosition="before" yPosition="below">
                 <button md-menu-item>
                     <span> Logout </span>
                 </button>
@@ -19,7 +19,7 @@
                 <button md-menu-item>
                     <span> Disable alerts </span>
                 </button>
-            </md-menu>
+            </mat-menu>
         </div>
     </div>
 </div>
@@ -40,7 +40,7 @@
 
         <dl>
             <dt routerLink="./news" routerLinkActive="active">News</dt>
-        </dl>        
+        </dl>
 
         <dl>
             <dt class="menu-group">Submenu 1<i class="material-icons expand">expand_more</i></dt>

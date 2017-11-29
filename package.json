@@ -23,7 +23,7 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
-    "@swimlane/ngx-datatable": "^10.0.5",
+    "@swimlane/ngx-datatable": "^11.1.5",
     "core-js": "^2.4.1",
     "jquery": "^3.2.1",
     "ng2-ckeditor": "^1.1.9",
