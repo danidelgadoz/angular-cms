@@ -1,103 +1,103 @@
 .dashboard {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
 }
 app-sidenav {
-    transition: width 0.35s;
-    z-index: 999;
+  transition: width 0.35s;
+  z-index: 9999;
 }
 
 :host.backdrop-state app-sidenav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 300px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
 }
 
 div[backdrop].active{
-    display: initial;
+  display: initial;
 }
 
 div[backdrop] {
-    display: none;
-    opacity: .48;
-    z-index: 59;
-    background-color: rgba(33,33,33,1.0);
-    -webkit-transition: opacity .45s;
-    transition: opacity .45s;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2000;
+  display: none;
+  opacity: .48;
+  z-index: 59;
+  background-color: rgba(33,33,33,1.0);
+  -webkit-transition: opacity .45s;
+  transition: opacity .45s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
 }
 
 .wrapper {
-    position: relative;
-    overflow: auto;
-    color: rgba(0,0,0,0.87);    
-    background-color: rgb(250,250,250); 
-    margin: 0;    
+  position: relative;
+  overflow: auto;
+  color: rgba(0,0,0,0.87);
+  background-color: rgb(250,250,250);
+  margin: 0;
 
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .wrapper app-toolbar {
-    background: #f6f6f6 !important;
-    color: #666 !important;    
+  background: #f6f6f6 !important;
+  color: #666 !important;
 }
 
-.wrapper app-toolbar .md-toolbar-tools {    
-    padding: 0;
+.wrapper app-toolbar .md-toolbar-tools {
+  padding: 0;
 }
 
 .wrapper app-toolbar button.side-nav-toggle{
-    display: none;
-    border-right: 1px solid rgba(0,0,0,.12); 
-    height: 100%;
-    min-width: 64px;
+  display: none;
+  border-right: 1px solid rgba(0,0,0,.12);
+  height: 100%;
+  min-width: 64px;
 }
 
 .wrapper div.content-wrapper {
-    overflow: auto;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  overflow: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .wrapper div.content-wrapper div.main-content {
-    position: relative;
-    flex: 1;
-    box-sizing: border-box;
+  position: relative;
+  flex: 1;
+  box-sizing: border-box;
 }
 
 .wrapper div.content-wrapper div.footer-content {
 }
 
 .wrapper div.content-wrapper div.footer-content div#license-footer {
-    padding: 16px 32px;
-    text-align: center;    
-    border-top: 1px solid #ddd;
+  padding: 16px 32px;
+  text-align: center;
+  border-top: 1px solid #ddd;
 }
 
 .wrapper div.content-wrapper div.footer-content div#license-footer a {
-    text-decoration: none;
-    color: rgb(255,82,82);
+  text-decoration: none;
+  color: rgb(255,82,82);
 }
 
 @media (max-width: 960px) {
-    :host app-sidenav {
-        width: 0;
-    }
-    .wrapper app-toolbar button.side-nav-toggle {
-        display: initial;
-    }
+  :host app-sidenav {
+      width: 0;
+  }
+  .wrapper app-toolbar button.side-nav-toggle {
+      display: initial;
+  }
 }
 
 
@@ -119,35 +119,35 @@ div[backdrop] {
 
 
 .user-menu {
-    height: 100%
+  height: 100%
 }
 
 .user-menu button {
-    height: 100%;
-    border-left: 1px solid rgba(0,0,0,.12); 
+  height: 100%;
+  border-left: 1px solid rgba(0,0,0,.12);
 }
 
 .user-menu button img {
-    height: 35px;
-    width: 35px;
-    float: left;
-    border-radius: 50%;
-    margin-right: 10px;
+  height: 35px;
+  width: 35px;
+  float: left;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .user-menu button md-icon {
-    color: rgba(0,0,0,0.54);
-    margin-left: 8px;
-    font-size: 16px!important;
-    width: 16px!important;
-    height: 16px!important;
-    min-width: 16px!important;
-    min-height: 16px!important;
-    line-height: 16px!important;
+  color: rgba(0,0,0,0.54);
+  margin-left: 8px;
+  font-size: 16px!important;
+  width: 16px!important;
+  height: 16px!important;
+  min-width: 16px!important;
+  min-height: 16px!important;
+  line-height: 16px!important;
 }
 
 .settings {
-    border-left: 1px solid rgba(0,0,0,.12); 
-    height: 100%;
-    min-width: 64px;
+  border-left: 1px solid rgba(0,0,0,.12);
+  height: 100%;
+  min-width: 64px;
 }
