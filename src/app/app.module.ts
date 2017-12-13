@@ -8,9 +8,9 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AuthGuard, IsLoggedIn } from './_guards/index';
-import { AuthInterceptor, responseInterceptor } from './_interceptors/index';
-import { AuthenticationService, ClientService } from './_services/index';
+import { AuthGuard, IsLoggedIn } from './guards/index';
+import { AuthInterceptor, responseInterceptor } from './interceptors/index';
+import { AuthenticationService, ClientService } from './services/index';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './layouts/login/login.component';
@@ -25,10 +25,10 @@ import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { ClientFormComponent } from './pages/clients/client-form/client-form.component';
 import { ClientsComponent } from './pages/clients/clients.component';
 import { DemoMaterialModule } from './demo-material-module';
-import { ContentComponent } from './_components/content/content.component';
-import { InputDemoComponent } from './_components/input-demo/input-demo.component';
-import { FileInputComponent } from './_components/file-input/file-input.component';
-import { DndDirective } from './_components/file-input/dnd.directive';
+import { ContentComponent } from './components/content/content.component';
+import { InputDemoComponent } from './components/input-demo/input-demo.component';
+import { FileInputComponent } from './components/file-input/file-input.component';
+import { DndDirective } from './components/file-input/dnd.directive';
 
 @NgModule({
   declarations: [

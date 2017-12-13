@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Page} from "../../_models/page";
-import {Client} from "../../_models/client";
-import { ClientService } from '../../_services/client.service';
+import {Page} from "../../models/page";
+import {Client} from "../../models/client";
+import { ClientService } from '../../services/client.service';
 
 @Component({
   selector: 'app-client',
@@ -10,12 +10,12 @@ import { ClientService } from '../../_services/client.service';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
-  deleteConfirmation = false;  
+  deleteConfirmation = false;
   page = new Page();
   rows = new Array<any>();
   selected = [{id: null}];
   isLoading: boolean;
-  
+
   columns = [
     { prop: 'first_name', name: 'Firstname' },
     { prop: 'last_name', name: 'Lastname' },
@@ -23,7 +23,7 @@ export class ClientsComponent implements OnInit {
     { prop: 'mobile_phone', name: 'Mobile Phone' },
     { prop: 'phone', name: 'Phone' },
     { prop: 'trademark', name: 'Trademark' }
-  ];  
+  ];
 
   constructor(private clientService: ClientService) {
     this.page.pageNumber = 0;
@@ -36,8 +36,8 @@ export class ClientsComponent implements OnInit {
 
   setPage(pageInfo){
     this.page.pageNumber = pageInfo.offset;
-    this.page.size = pageInfo.limit ? pageInfo.limit : this.page.size;    
-    
+    this.page.size = pageInfo.limit ? pageInfo.limit : this.page.size;
+
     this.isLoading = true;
     this.clientService.list(this.page).subscribe(pagedData => {
       this.isLoading = false;
@@ -57,7 +57,7 @@ export class ClientsComponent implements OnInit {
 
   delete(): void {
     console.log("deleting..");
-    document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');    
+    document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');
 
     this.clientService.delete(this.selected[0].id)
       .subscribe(data => {

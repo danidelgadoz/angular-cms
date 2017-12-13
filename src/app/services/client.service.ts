@@ -4,13 +4,13 @@ import {Observable} from 'rxjs/Rx';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Client } from '../_models/client';
-import {PagedData} from "../_models/paged-data";
-import {Page} from "../_models/page";
+import { Client } from '../models/client';
+import {PagedData} from "../models/paged-data";
+import {Page} from "../models/page";
 
 @Injectable()
 export class ClientService {
-  private clientUrl = 'http://192.168.1.210:8080/api/v1/clients';  
+  private clientUrl = 'http://192.168.1.210:8080/api/v1/clients';
 
   constructor(private httpc: HttpClient) { }
 
@@ -28,7 +28,7 @@ export class ClientService {
     });
   }
 
-  show(id: number) : Observable<Client>{    
+  show(id: number) : Observable<Client>{
     return this.httpc.get(`${this.clientUrl}/${id}`)
       .map((res: any) => res.data);
   }
@@ -41,7 +41,7 @@ export class ClientService {
       });
   }
 
-  update(_id, _client): Observable<Client> {    
+  update(_id, _client): Observable<Client> {
     return this.httpc
         .put(`${this.clientUrl}/${_id}`, _client)
         .map((res:any) => {
@@ -49,7 +49,7 @@ export class ClientService {
         });
   }
 
-  delete(id: number) : Observable<Client>{    
+  delete(id: number) : Observable<Client>{
     return this.httpc.delete(`${this.clientUrl}/${id}`)
       .map((res: any) => res.data);
   }

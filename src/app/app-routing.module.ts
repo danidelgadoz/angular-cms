@@ -12,8 +12,8 @@ import { ClientFormComponent } from './pages/clients/client-form/client-form.com
 import { ClientsComponent } from './pages/clients/clients.component';
 import { Error404Component } from './layouts/error-404/error-404.component';
 
-import { AuthGuard } from './_guards/auth.guard';
-import { IsLoggedIn } from './_guards/is-logged-in.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { IsLoggedIn } from './guards/is-logged-in.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
-import { Client } from '../../../_models/client';
-import { ClientService } from '../../../_services/client.service';
+import { Client } from '../../../models/client';
+import { ClientService } from '../../../services/client.service';
 
 export class Alert {
     active: boolean;
@@ -23,12 +23,12 @@ export class ClientFormComponent implements OnInit {
 
   imageFile : {link: string, file: any, name: string};
   alert: Alert = { active: false, title: '', message: ''};
-  
+
   constructor(
     formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private clientService: ClientService
-  ) { 
+  ) {
     this.form = formBuilder.group({
       first_name: ['', [
         Validators.required,
@@ -38,7 +38,7 @@ export class ClientFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(3)
       ]],
-      email: ['ddelgado@internovam.com', [        
+      email: ['ddelgado@internovam.com', [
         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
       ]],
       trademark: [],
@@ -61,15 +61,15 @@ export class ClientFormComponent implements OnInit {
           .subscribe(data => {
             this.client = data;
             if(this.client.img_trademark)
-              this.imageFile = { link: this.client.img_trademark, file: null, name: null};                  
+              this.imageFile = { link: this.client.img_trademark, file: null, name: null};
           });
       })
-  }  
+  }
 
   save(): void {
-    document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');    
+    document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');
     this.clientService.create(this.getClientAsFormData(this.form.value))//this.form.value
-      .subscribe(data => {        
+      .subscribe(data => {
         this.alert = {
           active: true,
           title: 'Client registered!',
@@ -80,10 +80,10 @@ export class ClientFormComponent implements OnInit {
   }
 
   update(): void {
-    document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');    
-    
+    document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');
+
     let data = this.form.value;
-    data.id = this.client.id;    
+    data.id = this.client.id;
     this.clientService.update(this.client.id, this.getClientAsFormData(this.form.value))
       .subscribe(data => {
         this.alert = {
@@ -94,10 +94,10 @@ export class ClientFormComponent implements OnInit {
         document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');
       });
   }
-  
+
   delete(): void {
     console.log("deleting..");
-    document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');    
+    document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');
 
     this.clientService.delete(this.client.id)
       .subscribe(data => {
@@ -111,7 +111,7 @@ export class ClientFormComponent implements OnInit {
   }
 
   reset(): void {
-    this.form.reset();    
+    this.form.reset();
     this.alert = { active: false, title: '', message: ''};
   }
 
@@ -137,7 +137,7 @@ export class ClientFormComponent implements OnInit {
               link: _event.target.result,
               file: event.srcElement.files[0],
               name: event.srcElement.files[0].name
-            };            
+            };
         }
 
         reader.readAsDataURL(event.target.files[0]);
