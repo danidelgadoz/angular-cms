@@ -1,29 +1,29 @@
 <app-toolbar class="large-toolbar toolbar-background">
   <div class="md-toolbar-tools toolbar-flex">
-      <button md-icon-button routerLink="./../">        
-        <md-icon>arrow_back</md-icon>
+      <button mat-icon-button routerLink="./../">
+        <mat-icon>arrow_back</mat-icon>
       </button>
 
       <div class="flex"></div>
-      
-      <!-- <button md-icon-button *ngIf="client.id" (click)="delete()">
-        <md-icon>delete</md-icon>
+
+      <!-- <button mat-icon-button *ngIf="client.id" (click)="delete()">
+        <mat-icon>delete</mat-icon>
       </button>
 
-      <button md-icon-button *ngIf="!client.id" (click)="delete()">
-        <md-icon>save</md-icon>
-      </button> -->      
+      <button mat-icon-button *ngIf="!client.id" (click)="delete()">
+        <mat-icon>save</mat-icon>
+      </button> -->
 
-      <button type="button" md-raised-button (click)="reset()">
-        <md-icon>refresh</md-icon>RESET
+      <button type="button" mat-raised-button (click)="reset()">
+        <mat-icon>refresh</mat-icon>RESET
       </button>
 
-      <button type="button" md-raised-button *ngIf="client.id" (click)="delete()">
-        <md-icon>delete</md-icon>DELETE
+      <button type="button" mat-raised-button *ngIf="client.id" (click)="delete()">
+        <mat-icon>delete</mat-icon>DELETE
       </button>
 
-      <button type="submit" md-raised-button form="clientForm">
-        <md-icon>save</md-icon>SAVE
+      <button type="submit" mat-raised-button form="clientForm">
+        <mat-icon>save</mat-icon>SAVE
       </button>
   </div>
 
@@ -41,54 +41,54 @@
       <fieldset [disabled]="alert.active">
         <div class="form-content">
           <div class="inputs-section">
-            <md-input-container style="width: 50%">
-              <input mdInput placeholder="First Name" type="text" id="first_name" [(ngModel)]="client.first_name" formControlName="first_name">
-              <md-error *ngIf="form.controls['first_name'].hasError('required')" class="form-control-feedback">
+            <mat-form-field style="width: 50%">
+              <input matInput placeholder="First Name" type="text" id="first_name" [(ngModel)]="client.first_name" formControlName="first_name">
+              <mat-error *ngIf="form.controls['first_name'].hasError('required')" class="form-control-feedback">
                 Required field
-              </md-error>
-            </md-input-container>
+              </mat-error>
+            </mat-form-field>
 
-            <md-input-container style="width: 49%">
-              <input mdInput placeholder="Last Name" type="text" id="last_name" [(ngModel)]="client.last_name" formControlName="last_name">
-              <md-error *ngIf="form.controls['first_name'].hasError('required')" class="form-control-feedback">
+            <mat-form-field style="width: 49%">
+              <input matInput placeholder="Last Name" type="text" id="last_name" [(ngModel)]="client.last_name" formControlName="last_name">
+              <mat-error *ngIf="form.controls['first_name'].hasError('required')" class="form-control-feedback">
                 Required field
-              </md-error>
-            </md-input-container>
+              </mat-error>
+            </mat-form-field>
 
-            <md-input-container style="width: 100%">
-              <input mdInput placeholder="Email" type="email" id="email" [(ngModel)]="client.email" formControlName="email">
-              <md-error *ngIf="form.controls['email'].hasError('pattern')" class="form-control-feedback">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="Email" type="email" id="email" [(ngModel)]="client.email" formControlName="email">
+              <mat-error *ngIf="form.controls['email'].hasError('pattern')" class="form-control-feedback">
                 Invalid Email
-              </md-error>
-            </md-input-container>
+              </mat-error>
+            </mat-form-field>
 
-            <md-input-container style="width: 100%">
-              <input mdInput placeholder="Trademark" type="text" id="trademark" [(ngModel)]="client.trademark" formControlName="trademark">
-            </md-input-container>
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="Trademark" type="text" id="trademark" [(ngModel)]="client.trademark" formControlName="trademark">
+            </mat-form-field>
 
-            <md-input-container style="width: 100%">
-              <input mdInput placeholder="Img trademark" type="text" id="img_trademark" [(ngModel)]="client.img_trademark" formControlName="img_trademark">
-            </md-input-container>
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="Img trademark" type="text" id="img_trademark" [(ngModel)]="client.img_trademark" formControlName="img_trademark">
+            </mat-form-field>
 
-            <md-input-container style="width: 49%">
-              <input mdInput placeholder="Telephone" type="tel" id="phone" [(ngModel)]="client.phone" formControlName="phone">
-            </md-input-container>
+            <mat-form-field style="width: 49%">
+              <input matInput placeholder="Telephone" type="tel" id="phone" [(ngModel)]="client.phone" formControlName="phone">
+            </mat-form-field>
 
-            <md-input-container style="width: 50%">
-              <input mdInput placeholder="Cellphone" type="tel" id="mobile_phone" [(ngModel)]="client.mobile_phone" formControlName="mobile_phone">
-            </md-input-container>
+            <mat-form-field style="width: 50%">
+              <input matInput placeholder="Cellphone" type="tel" id="mobile_phone" [(ngModel)]="client.mobile_phone" formControlName="mobile_phone">
+            </mat-form-field>
           </div>
 
           <div class="imagen-section">
             <div>
               <img class="md-whiteframe-4dp" [src]="imageFile ? imageFile.link : 'https://www.financiero.pe//themes/custom/financiero/img/glyph-servicio-al-cliente.svg'">
-              <button type="button" md-fab  onclick="document.querySelector('#exampleInputFile').click()">
-                <md-icon>attach_file</md-icon>
+              <button type="button" mat-fab  onclick="document.querySelector('#exampleInputFile').click()">
+                <mat-icon>attach_file</mat-icon>
               </button>
               <input type="file" id="exampleInputFile" (change)="imagesPreview($event)" style="display: none;">
             </div>
-            <!--<div style="width: 100%; padding: 8px 0;">              
-              <button type="button" md-raised-button color="primary" onclick="document.querySelector('#exampleInputFile').click()" style="width: 100%;">
+            <!--<div style="width: 100%; padding: 8px 0;">
+              <button type="button" mat-raised-button color="primary" onclick="document.querySelector('#exampleInputFile').click()" style="width: 100%;">
                 Seleccionar archivo
               </button>
               <span *ngIf="imageFile">{{ imageFile.name }}</span>
@@ -100,7 +100,7 @@
   </form>
 
   <!-- <div class="app-content-footer">
-    <button type="button" md-raised-button (click)="reset()">RESET</button>
-    <button type="submit" form="clientForm" md-raised-button color="primary">SAVE</button>
+    <button type="button" mat-raised-button (click)="reset()">RESET</button>
+    <button type="submit" form="clientForm" mat-raised-button color="primary">SAVE</button>
   </div>   -->
 </app-content>

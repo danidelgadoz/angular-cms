@@ -6,7 +6,7 @@
     z-index: 2;
     font-size: 20px;
     min-height: 64px;
-    width: 100%;    
+    width: 100%;
 
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084);
     background: #D50000 !important;
@@ -15,7 +15,7 @@
     z-index: 3;
 }
 
-:host /deep/ .md-toolbar-tools {    
+:host /deep/ .md-toolbar-tools {
     font-size: 20px;
     letter-spacing: .005em;
     box-sizing: border-box;
@@ -41,18 +41,18 @@
     padding-top: 8px;
 }
 
-:host.large-toolbar /deep/ .md-toolbar-tools.toolbar-flex {    
+:host.large-toolbar /deep/ .md-toolbar-tools.toolbar-flex {
     max-height: initial;
     height: initial;
     flex: 1;
 }
 
-:host.large-toolbar /deep/ .md-toolbar-tools button[md-raised-button]{
+:host.large-toolbar /deep/ .md-toolbar-tools button[mat-raised-button]{
     color: rgba(0, 0, 0, 0.87);
     margin-left: 8px;
 }
 
-:host.large-toolbar /deep/ .md-toolbar-tools button[md-raised-button] md-icon{
+:host.large-toolbar /deep/ .md-toolbar-tools button[mat-raised-button] mat-icon{
     font-size: 18px;
     height: 18px;
     width: 18px;

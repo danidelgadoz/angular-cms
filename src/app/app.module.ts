@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CKEditorModule } from 'ng2-ckeditor';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard, IsLoggedIn } from './_guards/index';
@@ -45,7 +45,9 @@ import { DndDirective } from './_components/file-input/dnd.directive';
     ClientsComponent,
     Error404Component,
     ContentComponent,
-    InputDemoComponent, FileInputComponent, DndDirective
+    InputDemoComponent,
+    FileInputComponent,
+    DndDirective
   ],
   imports: [
     AppRoutingModule,

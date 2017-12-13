@@ -5,7 +5,7 @@
     color: rgba(0,0,0,0.87);
     background-color: rgb(255,255,255);
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
-    
+
     margin: 16px;
     padding: 16px;
 }
@@ -14,7 +14,7 @@
     font-size: 14px;
 }
 
-:host /deep/ form md-input-container {
+:host /deep/ form mat-form-field {
     padding: 4px 0;
 }
 
@@ -27,6 +27,6 @@
     padding: 8px;
 }
 
-:host /deep/ .app-content-footer button {    
+:host /deep/ .app-content-footer button {
     margin-left: 8px;
 }

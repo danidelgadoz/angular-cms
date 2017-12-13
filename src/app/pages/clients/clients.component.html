@@ -3,33 +3,33 @@
       <i class="material-icons light-soft">person</i>
       <span class="light-soft">Clients</span>
 
-      <div class="flex"></div>      
-      
-      <!-- <button md-icon-button routerLink="./new">
-        <md-icon>add</md-icon>
+      <div class="flex"></div>
+
+      <!-- <button mat-icon-button routerLink="./new">
+        <mat-icon>add</mat-icon>
       </button>
 
-      <button md-icon-button *ngIf="selected[0]" [routerLink]="['../clients', selected[0].id]">
-        <md-icon>edit</md-icon>
+      <button mat-icon-button *ngIf="selected[0]" [routerLink]="['../clients', selected[0].id]">
+        <mat-icon>edit</mat-icon>
       </button>
 
-      <button md-icon-button *ngIf="selected[0]" (click)="deleteConfirmation=true">
-        <md-icon>delete</md-icon>
-      </button> -->          
+      <button mat-icon-button *ngIf="selected[0]" (click)="deleteConfirmation=true">
+        <mat-icon>delete</mat-icon>
+      </button> -->
 
-      <button type="button" md-raised-button [disabled]="!selected[0].id" (click)="deleteConfirmation=true">
-        <md-icon>delete</md-icon>DELETE
+      <button type="button" mat-raised-button [disabled]="!selected[0].id" (click)="deleteConfirmation=true">
+        <mat-icon>delete</mat-icon>DELETE
       </button>
 
-      <button type="button" md-raised-button [disabled]="!selected[0].id" [routerLink]="['../clients', selected[0].id]">
-        <md-icon>edit</md-icon>EDIT
+      <button type="button" mat-raised-button [disabled]="!selected[0].id" [routerLink]="['../clients', selected[0].id]">
+        <mat-icon>edit</mat-icon>EDIT
       </button>
   </div>
 </app-toolbar>
 
 <section>
-      <ngx-datatable 
-        class="material" 
+      <ngx-datatable
+        class="material"
         [rows]="rows"
         [loadingIndicator]="isLoading"
         [columns]="columns"
@@ -49,8 +49,8 @@
         (select)='onSelect($event)'>
       </ngx-datatable>
 
-      <button type="button" md-fab routerLink="./new" style="position: absolute; bottom: 12px; right: 12px;">
-        <md-icon>person_add</md-icon>
+      <button type="button" mat-fab routerLink="./new" style="position: absolute; bottom: 12px; right: 12px;">
+        <mat-icon>person_add</mat-icon>
       </button>
 </section>
 

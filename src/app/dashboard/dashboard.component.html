@@ -5,61 +5,61 @@
   <div class="wrapper">
       <app-toolbar>
           <div class="md-toolbar-tools">
-              <button md-button class="side-nav-toggle" (click)="toggleSideNav()">
-                  <md-icon> menu </md-icon>
+              <button mat-button class="side-nav-toggle" (click)="toggleSideNav()">
+                  <mat-icon> menu </mat-icon>
               </button>
 
-              <button md-raised-button color="accent" style="margin-left: 8px;">
-                  <md-icon style="font-size: 18px; height: 18px; width: 24px; color: rgba(0,0,0,.54);">dashboard</md-icon>
+              <button mat-raised-button color="accent" style="margin-left: 8px;">
+                  <mat-icon style="font-size: 18px; height: 18px; width: 24px; color: rgba(0,0,0,.54);">dashboard</mat-icon>
                   Internovam Theme (Ng4-cms)
               </button>
 
               <div class="flex"></div>
 
               <div class="user-menu">
-                  <button md-button [matMenuTriggerFor]="menu">
+                  <button mat-button [matMenuTriggerFor]="menu">
                       <img src="http://fuse-angular-material.withinpixels.com/assets/images/avatars/profile.jpg" alt="User Image">
                       Administrador
-                      <md-icon>keyboard_arrow_down</md-icon>
+                      <mat-icon>keyboard_arrow_down</mat-icon>
                   </button>
 
                   <mat-menu #menu="matMenu" [overlapTrigger]="false" xPosition="before" yPosition="above">
-                      <button md-menu-item (click)="logOut()">
-                          <md-icon> exit_to_app </md-icon>
+                      <button mat-menu-item (click)="logOut()">
+                          <mat-icon> exit_to_app </mat-icon>
                           <span> Logout </span>
                       </button>
-                      <button md-menu-item disabled>
-                          <md-icon> voicemail </md-icon>
+                      <button mat-menu-item disabled>
+                          <mat-icon> voicemail </mat-icon>
                           <span> Check voicemail </span>
                       </button>
-                      <button md-menu-item>
-                          <md-icon> notifications_off </md-icon>
+                      <button mat-menu-item>
+                          <mat-icon> notifications_off </mat-icon>
                           <span> Disable alerts </span>
                       </button>
                   </mat-menu>
               </div>
 
-              <button md-button [matMenuTriggerFor]="menuLanguage" class="settings">
+              <button mat-button [matMenuTriggerFor]="menuLanguage" class="settings">
                   <img src="http://fuse-angular-material.withinpixels.com/assets/images/flags/us.png" style="margin-right: 8px;">
                   <span>EN</span>
               </button>
               <mat-menu #menuLanguage="matMenu" [overlapTrigger]="false" xPosition="before" yPosition="above">
-                  <button md-menu-item>
+                  <button mat-menu-item>
                       <img src="http://fuse-angular-material.withinpixels.com/assets/images/flags/us.png" style="margin-right: 8px;">
                       <span>EN</span>
                   </button>
-                  <button md-menu-item>
+                  <button mat-menu-item>
                       <img src="http://fuse-angular-material.withinpixels.com/assets/images/flags/es.png" style="margin-right: 8px;">
                       <span>ES</span>
                   </button>
               </mat-menu>
 
-              <button md-button class="settings" (click)="toggleFullscreen()">
-                  <md-icon>fullscreen</md-icon>
+              <button mat-button class="settings" (click)="toggleFullscreen()">
+                  <mat-icon>fullscreen</mat-icon>
               </button>
 
-              <button md-button class="settings">
-                  <md-icon>format_list_bulleted</md-icon>
+              <button mat-button class="settings">
+                  <mat-icon>format_list_bulleted</mat-icon>
               </button>
           </div>
       </app-toolbar>

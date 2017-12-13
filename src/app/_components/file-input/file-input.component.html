@@ -15,14 +15,14 @@
 
   <div class="input-file">
     <div class="input-file__description">
-      <md-icon>insert_drive_file</md-icon>
+      <mat-icon>insert_drive_file</mat-icon>
       <p [style.color]="gallery.length ? 'rgba(0, 0, 0, 0.87)' : 'rgba(0, 0, 0, 0.26)'">
         {{ gallery.length ? (gallery.length==1 ? (gallery[0].name) : (gallery.length + ' files selected')) : 'Select file' }}
       </p>
     </div>
-    
+
     <div class="input-file__buttons">
-      <input 
+      <input
         type='file'
         multiple
         #inputFile
@@ -30,12 +30,12 @@
         (keyup)="addToGallery($event)"
         style="display: none;"
       >
-      <button type="button" md-raised-button (click)="cleanGallery()">
-        <md-icon>delete</md-icon>
+      <button type="button" mat-raised-button (click)="cleanGallery()">
+        <mat-icon>delete</mat-icon>
         DELETE
       </button>
-      <button type="button" md-raised-button color="primary" (click)="inputFile.click()">
-        <md-icon>folder</md-icon>
+      <button type="button" mat-raised-button color="primary" (click)="inputFile.click()">
+        <mat-icon>folder</mat-icon>
         BROWSE
       </button>
     </div>
