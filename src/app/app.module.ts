@@ -7,7 +7,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CKEditorModule } from 'ng2-ckeditor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { AppRoutingModule }     from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard, IsLoggedIn } from './_guards/index';
 import { AuthInterceptor, responseInterceptor } from './_interceptors/index';
 import { AuthenticationService, ClientService } from './_services/index';

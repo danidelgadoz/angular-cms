@@ -1,7 +1,7 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
- 
-import { AppComponent }   from './app.component';
+
+import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewsComponent } from './pages/news/news.component';
@@ -17,12 +17,12 @@ import { IsLoggedIn } from './_guards/is-logged-in.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { 
+  {
     path: 'login',
     component: LoginComponent,
     // resolve: [IsLoggedIn]
   },
-  { 
+  {
     path: 'dashboard',
     component: DashboardComponent,
     // canActivate: [AuthGuard],

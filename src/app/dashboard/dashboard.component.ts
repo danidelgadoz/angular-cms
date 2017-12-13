@@ -14,17 +14,17 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    setTimeout(()=>{ 
+    setTimeout(() => {
       this.init();
     }, 250);
   }
 
   init() {
-    let backdropElement : any = document.querySelectorAll('[backdrop]')[0];
+    const backdropElement: any = document.querySelectorAll('[backdrop]')[0];
     backdropElement.onclick = function() {
       this.classList.toggle('active');
       document.getElementsByTagName('app-root')[0].classList.toggle('backdrop-state');
-    }
+    };
   }
 
   toggleSideNav() {
@@ -33,12 +33,12 @@ export class DashboardComponent implements OnInit {
   }
 
   logOut() {
-    console.log("serrando session...");
+    console.log('serrando session...');
     this.authenticationService.logout();
   }
 
   toggleFullscreen() {
-    let elem = this._element.nativeElement.querySelector('.content-wrapper');
+    const elem = this._element.nativeElement.querySelector('.content-wrapper');
     if (elem.requestFullscreen) {
       elem.requestFullscreen();
     } else if (elem.webkitRequestFullScreen) {
