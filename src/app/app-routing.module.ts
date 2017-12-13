@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewsComponent } from './pages/news/news.component';
 import { DemoComponent } from './pages/demo/demo.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './layouts/login/login.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { ClientFormComponent } from './pages/clients/client-form/client-form.component';
 import { ClientsComponent } from './pages/clients/clients.component';
-import { Error404Component } from './_components/error-404/error-404.component';
+import { Error404Component } from './layouts/error-404/error-404.component';
 
 import { AuthGuard } from './_guards/auth.guard';
 import { IsLoggedIn } from './_guards/is-logged-in.guard';

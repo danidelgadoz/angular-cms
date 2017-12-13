@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AuthenticationService } from '../_services/authentication.service';
+import { AuthenticationService } from '../../_services/authentication.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {  
+export class LoginComponent implements OnInit {
   form: FormGroup;
   message : string;
 
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   loginUser(value : any ) {
     console.log(this.form.value);
-    
+
     this.authenticationService.login(this.form.value.email, this.form.value.password)
       .subscribe(
         data => {
