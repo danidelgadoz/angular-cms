@@ -17,9 +17,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
       multi: true,
     }
   ],
-  template: `<textarea                                 
-                [value]="inputValue" 
-                (change)="onChange($event)" 
+  template: `<textarea
+                [value]="inputValue"
+                (change)="onChange($event)"
                 (keyup)="onChange($event)"
             >
             </textarea>`,
@@ -29,22 +29,22 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
     }`
   ]
 })
-export class InputDemoComponent implements ControlValueAccessor, Validator {  
+export class InputDemoComponent implements ControlValueAccessor, Validator {
   private parseError: boolean;
-  private inputValue: any = '';  
+  private inputValue: any = '';
 
   // this is the initial value set to the component
   public writeValue(initialValue: any) {
-    if(initialValue){
-      this.inputValue = initialValue;      
+    if (initialValue) {
+      this.inputValue = initialValue;
     }
   }
 
   // registers 'fn' that will be fired wheb changes are made
   // this is how we emit the changes back to the form
-  public registerOnChange(fn: any) {    
+  public registerOnChange(fn: any) {
     this.propagateChange = fn;
-  }  
+  }
 
   // not used, used for touch input
   public registerOnTouched() { }
@@ -63,17 +63,17 @@ export class InputDemoComponent implements ControlValueAccessor, Validator {
   }
 
   // change events from the textarea
-  private onChange(event) {    
+  private onChange(event) {
     let newValue = event.target.value;
     this.inputValue = newValue;
 
-    if (newValue.length>2 && newValue.length<5)                    
+    if (newValue.length >2 && newValue.length < 5)
         this.parseError = false;
-    else          
-        this.parseError = true;      
+    else
+        this.parseError = true;
 
     // update the form
     this.propagateChange(this.inputValue);
-  }  
+  }
 
 }

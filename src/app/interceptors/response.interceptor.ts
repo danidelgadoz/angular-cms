@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Rx';
 import { AuthenticationService } from '../services/index';
 
 @Injectable()
-export class responseInterceptor implements HttpInterceptor {
+export class ResponseInterceptor implements HttpInterceptor {
 
     constructor(private authenticationService: AuthenticationService) { }
 

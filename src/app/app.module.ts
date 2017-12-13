@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard, IsLoggedIn } from './guards/index';
-import { AuthInterceptor, responseInterceptor } from './interceptors/index';
+import { AuthInterceptor, ResponseInterceptor } from './interceptors/index';
 import { AuthenticationService, ClientService } from './services/index';
 
 import { AppComponent } from './app.component';
@@ -63,7 +63,7 @@ import { DndDirective } from './components/file-input/dnd.directive';
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: responseInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
     AuthGuard,
     IsLoggedIn,
     AuthenticationService,

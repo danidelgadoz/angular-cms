@@ -9,7 +9,7 @@ export class Alert {
     active: boolean;
     title: string;
     message: string;
-};
+}
 
 @Component({
   selector: 'app-client-form',
@@ -21,7 +21,7 @@ export class ClientFormComponent implements OnInit {
   title: string;
   client: Client = new Client();
 
-  imageFile : {link: string, file: any, name: string};
+  imageFile: {link: string, file: any, name: string};
   alert: Alert = { active: false, title: '', message: ''};
 
   constructor(
@@ -51,7 +51,7 @@ export class ClientFormComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .subscribe(params => {
-        var id = +params.get('id');
+        const id = +params.get('id');
         this.title = id ? 'Edit User' : 'New User';
 
         if (!id)
@@ -63,7 +63,7 @@ export class ClientFormComponent implements OnInit {
             if(this.client.img_trademark)
               this.imageFile = { link: this.client.img_trademark, file: null, name: null};
           });
-      })
+      });
   }
 
   save(): void {
@@ -82,7 +82,7 @@ export class ClientFormComponent implements OnInit {
   update(): void {
     document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');
 
-    let data = this.form.value;
+    const data = this.form.value;
     data.id = this.client.id;
     this.clientService.update(this.client.id, this.getClientAsFormData(this.form.value))
       .subscribe(data => {
@@ -96,7 +96,7 @@ export class ClientFormComponent implements OnInit {
   }
 
   delete(): void {
-    console.log("deleting..");
+    console.log('deleting..');
     document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');
 
     this.clientService.delete(this.client.id)
@@ -116,7 +116,7 @@ export class ClientFormComponent implements OnInit {
   }
 
   getClientAsFormData(_clienteFormGroup): FormData {
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('img_trademark', this.imageFile.file);
     formData.append('first_name', _clienteFormGroup.first_name);
     formData.append('last_name', _clienteFormGroup.last_name);
@@ -130,15 +130,15 @@ export class ClientFormComponent implements OnInit {
 
   imagesPreview(event) {
     if (event.target.files && event.target.files[0]) {
-        var reader = new FileReader();
+        const reader = new FileReader();
 
-        reader.onload = (_event:any) => {
+        reader.onload = (_event: any) => {
             this.imageFile = {
               link: _event.target.result,
               file: event.srcElement.files[0],
               name: event.srcElement.files[0].name
             };
-        }
+        };
 
         reader.readAsDataURL(event.target.files[0]);
     }

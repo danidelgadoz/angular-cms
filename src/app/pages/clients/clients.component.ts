@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Page} from "../../models/page";
-import {Client} from "../../models/client";
+import {Page} from '../../models/page';
+import {Client} from '../../models/client';
 import { ClientService } from '../../services/client.service';
 
 @Component({
@@ -34,7 +34,7 @@ export class ClientsComponent implements OnInit {
     this.setPage({ offset: 0 });
   }
 
-  setPage(pageInfo){
+  setPage(pageInfo) {
     this.page.pageNumber = pageInfo.offset;
     this.page.size = pageInfo.limit ? pageInfo.limit : this.page.size;
 
@@ -56,12 +56,12 @@ export class ClientsComponent implements OnInit {
   }
 
   delete(): void {
-    console.log("deleting..");
+    console.log('deleting..');
     document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');
 
     this.clientService.delete(this.selected[0].id)
       .subscribe(data => {
-        this.setPage({offset:0});
+        this.setPage({offset: 0});
         document.querySelectorAll('[loadingBackdrop]')[0].classList.toggle('active');
       });
   }

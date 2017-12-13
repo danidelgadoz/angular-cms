@@ -5,8 +5,8 @@ import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
 
 import { Client } from '../models/client';
-import {PagedData} from "../models/paged-data";
-import {Page} from "../models/page";
+import {PagedData} from '../models/paged-data';
+import {Page} from '../models/page';
 
 @Injectable()
 export class ClientService {
@@ -15,11 +15,11 @@ export class ClientService {
   constructor(private httpc: HttpClient) { }
 
   list(page: Page): Observable<PagedData<Client>> {
-    let listUrl = `${this.clientUrl}/?page=${page.pageNumber+1}&limit=${page.size}`;
+    const listUrl = `${this.clientUrl}/?page=${page.pageNumber + 1}&limit=${page.size}`;
     return this.httpc.get(listUrl)
-    .map((res:any) => {
-      let pagedData = new PagedData<Client>();
-      let data = res.data;
+    .map((res: any) => {
+      const pagedData = new PagedData<Client>();
+      const data = res.data;
       page.totalElements = data.total;
       page.totalPages = data.last_page;
       pagedData.page = page;
@@ -28,7 +28,7 @@ export class ClientService {
     });
   }
 
-  show(id: number) : Observable<Client>{
+  show(id: number): Observable<Client> {
     return this.httpc.get(`${this.clientUrl}/${id}`)
       .map((res: any) => res.data);
   }
@@ -36,7 +36,7 @@ export class ClientService {
   create(_client): Observable<Client> {
     return this.httpc
       .post(this.clientUrl, _client)
-      .map((res:any) => {
+      .map((res: any) => {
         return res.data;
       });
   }
@@ -44,12 +44,12 @@ export class ClientService {
   update(_id, _client): Observable<Client> {
     return this.httpc
         .put(`${this.clientUrl}/${_id}`, _client)
-        .map((res:any) => {
+        .map((res: any) => {
           return res.data;
         });
   }
 
-  delete(id: number) : Observable<Client>{
+  delete(id: number): Observable<Client> {
     return this.httpc.delete(`${this.clientUrl}/${id}`)
       .map((res: any) => res.data);
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-declare var jquery:any;
-declare var $ :any;
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-sidenav',
@@ -12,19 +12,19 @@ export class SidenavComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    setTimeout(()=>{
+    setTimeout(() => {
       this.init();
       this.activeToogleMenu();
       this.listenRouterChanges();
-    },250);
+    }, 250);
   }
 
   activeToogleMenu() {
-    let menuGroupList = $('.menu-group');     
+    const menuGroupList = $('.menu-group');
     menuGroupList.on('click', null, function(){
-      let menuGroupClicked = $(this);      
-      let menuContainer = menuGroupClicked.next();
-      
+      const menuGroupClicked = $(this);
+      const menuContainer = menuGroupClicked.next();
+
       menuContainer.slideToggle();
       menuGroupClicked.toggleClass('open');
       menuGroupList.not(menuGroupClicked).next().slideUp().prev().removeClass('open');
@@ -32,23 +32,23 @@ export class SidenavComponent implements OnInit {
   }
 
   listenRouterChanges() {
-    $('[routerLinkActive=active]').on('click', null, function(){      
+    $('[routerLinkActive=active]').on('click', null, function(){
       $('.selected-left-border').removeClass('selected-left-border');
 
       if ( $(this).prop('nodeName') == 'DT' ) {
         $('.menu-group').next().slideUp().prev().removeClass('open'); // close all group sections
-        $(this).parent().addClass('selected-left-border');        
-      } else{ 
+        $(this).parent().addClass('selected-left-border');
+      } else {
         $(this).parent().parent().parent().addClass('selected-left-border');
       }
     });
   }
 
   init() {
-    let activeElement = $('.active[routerLinkActive=active]');
+    const activeElement = $('.active[routerLinkActive=active]');
 
     // check if the active element is in a group section
-    if (activeElement.prop('nodeName')=='DT') {
+    if (activeElement.prop('nodeName') == 'DT') {
       activeElement.parent().addClass('selected-left-border');
     } else {
       activeElement.parent().parent().parent().addClass('selected-left-border');

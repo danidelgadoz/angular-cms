@@ -12,18 +12,18 @@ import { DomSanitizer } from '@angular/platform-browser';
       useExisting: forwardRef(() => FileInputComponent),
       multi: true,
     }
-  ],  
+  ],
 })
-export class FileInputComponent implements ControlValueAccessor {  
+export class FileInputComponent implements ControlValueAccessor {
   @Output() upload: EventEmitter<any[]> = new EventEmitter<any[]>();
 
   private inputValue: any;
   gallery: any[] = [];
 
-  constructor(private sanitizer:DomSanitizer){}
+  constructor(private sanitizer: DomSanitizer) {}
 
   public writeValue(initialValue: any) {
-    if(initialValue){
+    if (initialValue) {
       this.inputValue = initialValue;
     }
   }
@@ -37,29 +37,29 @@ export class FileInputComponent implements ControlValueAccessor {
   private propagateChange = (_: any) => {};
 
   private addToGallery(event) {
-    let fileList : File[] = [];
-    
-    if (event.target.files && event.target.files.length>0) { // when is loaded by fileUploadPopup
+    let fileList: File[] = [];
+
+    if (event.target.files && event.target.files.length > 0) { // when is loaded by fileUploadPopup
       fileList = event.target.files;
-    } else if( event.dataTransfer) { // when is loaded by dragAndDrop
+    } else if ( event.dataTransfer) { // when is loaded by dragAndDrop
       fileList = event.dataTransfer.files;
     }
 
     if (fileList.length < 0)
       return;
-    
-    let galleryLengthBefore = this.gallery.length;
 
-    for (var i = 0; i < fileList.length; i++) {
-      var reader = new FileReader();
-      
+    const galleryLengthBefore = this.gallery.length;
+
+    for (let i = 0; i < fileList.length; i++) {
+      const reader = new FileReader();
+
       reader.onload = (function(_file, _this, _filesAmount){
         return function(e){
           _this.gallery.push(_file);
           if(_this.gallery.length == (_filesAmount + galleryLengthBefore))
             _this.upload.emit();
         };
-      })(fileList[i], this, fileList.length);// callback when the images have been loaded
+      })(fileList[i], this, fileList.length); // callback when the images have been loaded
       reader.readAsDataURL(fileList[i]);
     }
 
@@ -82,7 +82,7 @@ export class FileInputComponent implements ControlValueAccessor {
     return file.type.includes('image') ? this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file)) : 'http://ciudad-escuela.org/wp-content/uploads/2014/04/quincem-badge-archivo.urbano-234x234.png';
   }
 
-  /*private onChange(event) {    
+  /*private onChange(event) {
     if (event.target.files && event.target.files[0]) {
         var reader = new FileReader();
 
@@ -97,5 +97,4 @@ export class FileInputComponent implements ControlValueAccessor {
         this.propagateChange(this.gallery);
     }
   }*/
-  
 }
