@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Validator } from '@angular/forms';
 
 @Component({
@@ -22,7 +22,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
                 (change)="onChange($event)"
                 (keyup)="onChange($event)"
             >
-            </textarea>`,
+            </textarea>
+            <span>demo2: {{demo2Value}}</span>`,
   styles: [
     `textarea {
       width: 100%;
@@ -32,6 +33,17 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
 export class InputDemoComponent implements ControlValueAccessor, Validator {
   private parseError: boolean;
   private inputValue: any = '';
+  demo2Value = "";
+
+  @Output() counterChange = new EventEmitter();
+
+
+  @Input()
+  set demo2(val) {
+    console.log(val);
+    this.demo2Value = val;
+    // this.counterChange.emit(this.demo2Value);
+  }
 
   // this is the initial value set to the component
   public writeValue(initialValue: any) {

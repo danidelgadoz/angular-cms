@@ -9,6 +9,7 @@ export class NewsComponent implements OnInit {
   ckeditorContent: any;
   inputDemoModel: string;
   fileArray: any[];
+  testString2 = "qwer";
 
   constructor() { }
 
