@@ -1,7 +1,9 @@
 <app-content>
-  demo2<input [(ngModel)]="testString2">
+  <!-- demo2<input [(ngModel)]="testString2"> -->
 
-  <app-input-demo [demo2]="testString2"></app-input-demo>
+  <app-input-demo [(ngModel)]="testString2"></app-input-demo>
+  <h1>page component: {{ testString2 }}</h1>
+  <button (click)="testString2=null">change Value</button>
 </app-content>}
 
 <app-content>

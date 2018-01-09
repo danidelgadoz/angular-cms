@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, forwardRef, OnChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Validator } from '@angular/forms';
 
 @Component({
@@ -20,10 +20,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
   template: `<textarea
                 [value]="inputValue"
                 (change)="onChange($event)"
-                (keyup)="onChange($event)"
             >
             </textarea>
-            <span>demo2: {{demo2Value}}</span>`,
+            <span>custom component: {{inputValue}}</span>`,
   styles: [
     `textarea {
       width: 100%;
@@ -39,9 +38,8 @@ export class InputDemoComponent implements ControlValueAccessor, Validator {
 
 
   @Input()
-  set demo2(val) {
-    console.log(val);
-    this.demo2Value = val;
+  set ngModel(val) {
+    console.log("ngModel", val);
     // this.counterChange.emit(this.demo2Value);
   }
 
@@ -67,11 +65,8 @@ export class InputDemoComponent implements ControlValueAccessor, Validator {
   // validates the form, returns null when valid else the validation object
   // in this case we're checking if the json parsing has passed or failed from the onChange method
   public validate(c: FormControl) {
-    return (!this.parseError) ? null : {
-      lengthError: {
-          valid: false,
-      },
-    };
+    console.log("validate()..  ", c.value);
+    return null;
   }
 
   // change events from the textarea

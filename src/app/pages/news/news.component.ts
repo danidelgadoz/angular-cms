@@ -20,4 +20,8 @@ export class NewsComponent implements OnInit {
   filesLoaded() {
     console.log(this.fileArray)
   }
+
+  test() {
+    console.log("testString2:", this.testString2);
+  }
 }
