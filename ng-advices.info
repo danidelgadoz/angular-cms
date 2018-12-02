@@ -1,6 +1,0 @@
-- Usar la misma nomenclatura en el nombre de nuestros archivos feature.type.ts (hero.component.ts|html|css|spec)
-- Usar guion (-) para separar el palabras en el nombre descriptivo.
-- Usar punto (.) para separar el tipo del nombre descriptivo.
-- Un acrhivo solo ha de contener un service or component.
-- Un archivo no debe contener mas de 400 lineas de codigo.
-- Considerar nor sobrepasar 75 lineas de codigo en una funcion.

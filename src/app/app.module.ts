@@ -14,7 +14,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { AppRoutingModule } from './app-routing.module';
 import { DemoMaterialModule } from './demo-material-module';
 import { AuthGuard, IsLoggedIn } from './guards/index';
-import { AuthInterceptor, ResponseInterceptor } from './interceptors/index';
+import { AppInterceptor } from './interceptors/http.interceptor';
 import { AuthenticationService, ClientService } from './services/index';
 
 // App pages

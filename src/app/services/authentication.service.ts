@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { Router }            from '@angular/router';
-import 'rxjs/add/operator/map'
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AuthenticationService {
@@ -10,26 +10,28 @@ export class AuthenticationService {
     private headers = new Headers({
         'Content-Type': 'application/json'
     });
-    
+
     constructor(private http: Http, private router: Router) { }
 
     login(username: string, password: string) {
-        let data = {
+        const data = {
             email: username,
             password: password
-        }
-        
+        };
+
         return this.http.post(`${this.authUrl}/login`, data, {headers: this.headers})
-        .map((response: Response) => {
-            let body = response.json();            
-            if (body.auth) {
-                localStorage.setItem('currentUser', JSON.stringify(body.data));
-            }
-            return body;
-        });
+        .pipe(
+            map((response: Response) => {
+                const body = response.json();
+                if (body.auth) {
+                    localStorage.setItem('currentUser', JSON.stringify(body.data));
+                }
+                return body;
+            })
+        );
     }
 
-    logout() {      
+    logout() {
       localStorage.removeItem('currentUser');
       this.router.navigate(['/login']);
     }
