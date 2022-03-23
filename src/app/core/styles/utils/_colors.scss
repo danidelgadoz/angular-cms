@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+@import '../variables/palette';
+
+$theme-palettes: (
+    primary: mat.define-palette($app-primary-palette),
+    accent: mat.define-palette($app-accent-palette, $app-accent-intention),
+    warn: mat.define-palette(mat.$red-palette),
+);
+
+@each $alias, $palette in $theme-palettes {
+    .#{$alias} {
+        background-color: mat.get-color-from-palette($palette);
+        color: mat.get-color-from-palette($palette, default-contrast);
+    }
+
+    @each $nameTonality, $colorTonality in $palette {
+        @if $nameTonality != 'contrast' {
+            .#{$alias}-#{$nameTonality} {
+                background-color: $colorTonality;
+            }
+        }
+    }
+
+    @each $nameContrast, $colorConstrast in map-get($palette, 'contrast') {
+        .#{$alias}-#{$nameContrast} {
+            color: $colorConstrast;
+        }
+    }
+}

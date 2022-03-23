@@ -1,46 +1,42 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-import { LoginComponent } from './layouts/login/login.component';
-import { DashboardComponent } from './layouts/dashboard/dashboard.component';
-import { Error404Component } from './layouts/error-404/error-404.component';
-import { HomeComponent } from './pages/home/home.component';
-import { NewsComponent } from './pages/news/news.component';
-import { DemoComponent } from './pages/demo/demo.component';
-import { UserFormComponent } from './pages/users/user-form/user-form.component';
-import { ClientFormComponent } from './pages/clients/client-form/client-form.component';
-import { ClientsComponent } from './pages/clients/clients.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { Logged } from './core/guards/logged.guard';
+import { NotFoundComponent } from './core/layouts/not-found/not-found.component';
 
-import { AuthGuard } from './guards/auth.guard';
-import { IsLoggedIn } from './guards/is-logged-in.guard';
-
-const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+const appRoutes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent,
-    // resolve: [IsLoggedIn]
+    path: '',
+    redirectTo: 'auth',
+    pathMatch: 'full'
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    resolve: [Logged]
   },
   {
     path: 'dashboard',
-    component: DashboardComponent,
-    // canActivate: [AuthGuard],
-    children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home',  component: HomeComponent },
-      { path: 'user',  component: UserFormComponent },
-      { path: 'clients',  component: ClientsComponent, pathMatch: 'full' },
-      { path: 'clients/new',  component: ClientFormComponent },
-      { path: 'clients/:id',  component: ClientFormComponent },
-      { path: 'news',  component: NewsComponent },
-      { path: 'demo',  component: DemoComponent },
-    ]
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivate: [AuthGuard]
   },
-  { path: '**', component: Error404Component }
+  {
+    path: 'not-found',
+    component: NotFoundComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found'
+  }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule],
+  providers: [
+    AuthGuard,
+    Logged
+  ]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,0 +1,6 @@
+<div class="u-margin-24">
+  <h1 (click)="filesLoaded()">FileInputMultiple</h1>
+
+  <app-file-input [(ngModel)]="fileArray" name="fileArray" (upload)="filesLoaded()"></app-file-input>
+
+</div>

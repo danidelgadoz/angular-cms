@@ -1,0 +1,151 @@
+@use "../../../core/styles/variables/palette.scss" as palette;
+
+$primary: #2d323e;
+$accent: map-get(palette.$app-accent-palette, palette.$app-accent-intention);
+$color: rgba(255, 255, 255, 0.87);
+
+:host {
+  height: auto;
+  min-height: 100%;
+}
+
+.sidenav {
+  background-color: $primary;
+  box-sizing: border-box;
+  height: auto;
+  min-height: 100%;
+  width: 280px;
+  min-width: 280px;
+  overflow: auto;
+  overflow-x: hidden;
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084);
+  transition: width 0.35s, min-width 0.35s;
+
+  ::ng-deep {
+    .sidenav-header {
+      display: flex;
+      flex-direction: row;
+      flex: 1 0 auto;
+      align-items: center;
+      justify-content: space-between;
+      background-color: lighten($primary, 4%);
+      color: $color;
+      box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+
+      .mat-toolbar-row {
+        justify-content: space-between;
+
+        .logo {
+          display: flex;
+          align-items: center;
+
+          .logo-icon {
+            width: 32px;
+          }
+
+          .logo-text {
+            margin-left: 12px;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: .4px;
+            line-height: normal;
+          }
+        }
+
+        button {
+          color: rgba(255,255,255,.7)!important;
+        }
+      }
+    }
+    .sidenav-menu {
+      padding-top: 16px;
+      font-size: 14px !important;
+
+      dl {
+        margin: 0;
+        white-space: nowrap;
+
+        dt {
+          padding: 16px;
+          color: rgba(255, 255, 255, 0.87);
+          cursor: pointer;
+          outline: none;
+
+          &:hover {
+            background-color: darken($primary, 2%);
+          }
+
+          &.active {
+            background-color: $accent;
+          }
+        }
+
+        &.submenu {
+          transition: all 0.4s;
+
+          dt {
+            display: flex;
+            justify-content: space-between;
+
+            &:after {
+              font-family: 'Material Icons';
+              content: "expand_more";
+              transition: all 0.4s ease;
+              display: flex;
+              align-items: center;
+            }
+          }
+
+          dd {
+            margin: 0;
+            background-color: darken($primary, 4%);
+            overflow: hidden;
+            transition: height 0.4s;
+
+            a {
+              color: rgba(255, 255, 255, 0.87);
+              display: block;
+              letter-spacing: .1px;
+              overflow: hidden;
+              padding: 16px;
+              padding-left: 18px;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              text-decoration: none;
+              cursor: pointer;
+
+              &.active {
+                background-color: $accent;
+              }
+            }
+          }
+
+          &.open {
+            background-color: darken($primary, 4%);
+
+            dt:after {
+              transform: rotate(-180deg);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.fixed {
+    position: absolute;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.35s;
+    z-index: 9;
+  }
+  &.fixed.closed {
+    width: 300px;
+    min-width: 300px;
+    transform: translate3d(-100%, 0, 0);
+  }
+  &.closed {
+    width: 0;
+    min-width: 0;
+    box-shadow: none;
+  }
+}

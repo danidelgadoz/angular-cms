@@ -1,0 +1,94 @@
+<div class="carded">
+    <div class="top-bg accent"></div>
+
+    <div class="center">
+        <div class="header accent">
+            <div>
+                <button mat-icon-button (click)="navigateToListPage()">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div>
+                    <h2>{{ customer ? customer.name : 'Customer' }}</h2>
+                    <p>Customer Detail</p>
+                </div>
+            </div>
+
+            <div>
+                <button type="button"
+                        mat-raised-button
+                        class="u-margin-l-8"
+                        [disabled]="clientForm.invalid"
+                        *ngIf="pageType ==='new'" (click)="addCustomer()">
+                    <span>ADD</span>
+                </button>
+
+                <button type="button"
+                        mat-raised-button
+                        class="u-margin-l-8"
+                        [disabled]="clientForm.invalid || clientForm.pristine"
+                        *ngIf="pageType ==='edit'" (click)="saveCustomer()">
+                    <span>SAVE</span>
+                </button>
+
+                <button type="button"
+                        mat-raised-button
+                        class="u-margin-l-8"
+                        *ngIf="pageType ==='edit'" (click)="confirmDeleteCustomer()">
+                    <span>DELETE</span>
+                </button>
+            </div>
+        </div>
+
+        <perfect-scrollbar class="content-card">
+            <form [formGroup]="clientForm" class="vertical-fit">
+                <fieldset>
+                    <mat-tab-group>
+                        <mat-tab label="Basic Information">
+                            <div class="u-padding-16">
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Name" type="text" formControlName="name">
+                                    <mat-error *ngIf="false" class="form-control-feedback">
+                                        Required field
+                                    </mat-error>
+                                </mat-form-field>
+                        
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Document Type" type="text" formControlName="documentType">
+                                    <mat-error *ngIf="false" class="form-control-feedback">
+                                        Required field
+                                    </mat-error>
+                                </mat-form-field>
+                        
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Document Number" type="text" formControlName="documentNumber">
+                                    <mat-error *ngIf="false" class="form-control-feedback">
+                                        Required field
+                                    </mat-error>
+                                </mat-form-field>
+                        
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Email" type="email" formControlName="email">
+                                    <mat-error *ngIf="false" class="form-control-feedback">
+                                        Invalid Email
+                                    </mat-error>
+                                </mat-form-field>
+                        
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Address" type="text" formControlName="address">
+                                    <mat-error *ngIf="false" class="form-control-feedback">
+                                        Required field
+                                    </mat-error>
+                                </mat-form-field>
+                        
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Telephone" type="tel" formControlName="phoneNumber">
+                                </mat-form-field>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </fieldset>
+            </form>
+        </perfect-scrollbar>
+    </div>
+</div>

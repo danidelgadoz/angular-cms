@@ -1,0 +1,59 @@
+<div class="carded">
+    <div class="top-bg accent"></div>
+
+    <div class="center">
+        <div class="header accent">
+            <h2>Customers</h2>
+
+            <div>
+                <button type="button" mat-raised-button class="u-margin-l-8">
+                    <mat-icon>delete</mat-icon>DELETE
+                </button>
+                
+                <button type="button" mat-raised-button class="u-margin-l-8">
+                    <mat-icon>edit</mat-icon>EDIT
+                </button>
+
+                <button type="button" mat-raised-button class="u-margin-l-8" (click)="onCustomerAddNavigate()">
+                    <mat-icon>add</mat-icon>ADD
+                </button>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <perfect-scrollbar>
+                <mat-table [dataSource]="dataSource" matSort class="vertical-fit">
+                    <ng-container matColumnDef="documentType">
+                        <mat-header-cell *matHeaderCellDef> RUC </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.documentType}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef> Cliente </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="phoneNumber">
+                        <mat-header-cell *matHeaderCellDef> Teléfono </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.phoneNumber}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="email">
+                        <mat-header-cell *matHeaderCellDef> Correo </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="address">
+                        <mat-header-cell *matHeaderCellDef> Direccion </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onCustomerDetailNavigate(row)"></mat-row>
+                </mat-table>
+            </perfect-scrollbar>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>
